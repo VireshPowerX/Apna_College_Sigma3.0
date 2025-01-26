@@ -1,0 +1,67 @@
+div {    /* comment */
+    /* div is selector and * is universal selector */
+    /* cascading style sheet tag last style declared */
+    /* more power declare that style */
+    /* selector speciality inline css is 1000 power id is 100 power class & pseudo-class is 10 power element & pseudo-element is 1 power */
+    color:indianred !important; /* !important override all style is 10000 power */
+    /* inherit parent style div in p in ul in li lets div red and p yellow declared but ul and li is red bcz css is inheritance */
+    /* button and input are declared inherit*/
+    background-color: oldlace;
+    color: rgb(0, 0,0 ); /* rgb red green blue 0 to 255 */
+    color: #000000; /* hex hexadecimal 0 to f */
+    color: #000; /* hex short hand */
+    color: rgba(0, 0, 0, 0.5); /* rgba red green blue alpha 0 to 1 */
+    color: hsl(0, 100%, 50%); /* hsl hue saturation lightness 0 to 360 0% to 100% 0% to 100% */
+    color: hsla(0, 100%, 50%, 0.5); /* hsla hue saturation lightness alpha 0 to 1 */
+    text-align: center; /* left right center justify */
+    font-weight: 100; /* 100 200 300 400 500 600 700 800 900 bold */
+    text-decoration: underline; /* underline overline line-through none */
+    line-height: normal; /* normal 1.5 2em 200% */
+    letter-spacing: normal; /* normal 1px 0.1em */
+    font-size: large; /* xx-small x-small small medium large x-large xx-large smaller larger 10px 1em */
+    font-family: Arial, sans-serif; /* Arial sans-serif serif monospace cursive fantasy */}
+p  {    #myid {    /* id selector in css # */}
+    .myclass {    /* class selector in css . */}
+    .myclass.myclass2 {    /* multiple class selector in css . */}
+    p > span {    /* child selector in css p > span */}
+    p span {    /* descendant selector in css p span */}
+    p + span {    /* adjacent sibling selector in css p + span */}
+    p ~ span {    /* general sibling selector in css p ~ span */}
+    input[type="text"] {    /* attribute selector in css input[type="text"] */}
+    h1:hover {    /* hover pseudo-class when my mouse arrow hover its change style*/}
+    h1:nth-of-type(2) {    /* nth-of-type pseudo-class only 2 h1, every 2+2+... h1 */}
+    h1:active {    /* active pseudo-class every link click its active*/}
+    h1:checked {    /* checked pseudo-class checkbox radio*/}
+    h1::first-letter {    /* first-letter pseudo-element */}
+    h1::first-line {    /* first-line pseudo-element */}
+    h1::selection {    /* selection pseudo-element if i select and words */}
+    /* Box Model  */
+    height: 200px;
+    width: 200px;
+    margin: 10px; /* top right bottom left */
+    padding : 10px; /* top right bottom left */
+    border: 1px solid black; /* width style color */
+    border-top: 5px dashed black; /* top width style color border(top right bottom left)*/
+    border-radius: 10px; /* 10px 10px 10px 10px top-left top-right bottom-right bottom-left */
+    padding: 0% 10% 0% 10%; /* padding(top right bottom left) */
+    margin: 0% 10% 0% 10%; /* margin(top right bottom left) */
+    /* Display */
+    display: block; /* block inline inline-block none */
+    display: inline-block; /* block inline inline-block none */
+    display: inline; /* block inline inline-block none */
+    display: none; /* block inline inline-block none */
+    /* em is relative to the font-size of the element inherit size from other element */
+    /* rem is relative to the font-size of the root element */
+    /* % is relative to the font-size of the parent element */ 
+    color:rgba(0, 0, 0, 0.5); /* rgba red green blue alpha 0 to 1 */
+    opacity: 0.5; /* opacity is whole elment include sub element also blur 0 to 1 */
+    transition: all 1s; /* transition property duration timing-function delay fade in fade out effect */
+    transition-duration: 1s 1s; /* transition-duration property duration 1s effect 1s delay*/
+    transition: margin 1s ease-in 1s, padding 1s ease-out 1s; /* attribute effect style delay */
+    transform: rotate(45deg); /* rotate skew scale translate matrix */
+    /* clockwise 75deg anticlockwise -180 deg, slant 0-90deg, x and y axis size change, x and y axis position change -45px */
+    box-shadow: 10px 10px 5px 0px #888888; /* horizontal vertical blur spread color */
+    background-image: url('image.jpg'); /* file name */
+    background-size: contain; /* cover contain auto 100% 100% (repeat, crop, stretch, perfect size) */
+    position: relative; /* static relative absolute fixed sticky ()*/
+}
