@@ -1,0 +1,69 @@
+.container {
+    display: grid; /* its block */
+    grid-template-columns: 100px 100px 100px; /* column created 3 per column 100 px */
+    grid-template-rows: 100px 100px 100px; /* row created 3 per row 100 px */
+    grid-template-rows: repeat(3, 100px); /* first 3 rows are 100px */
+    grid-template-rows: 1fr 1fr 1fr; /* 3 equal portion distributed spaces */
+    grid-template-columns: repeat(3, 100px); /* first 3 column are 100 px */
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal portion distributed spaces */
+    grid-row-gap: 10px; /* gap between row */
+    grid-column-gap: 10px; /* gap between column */
+    grid-gap: 10px 20px; /* gap between row and column */
+    grid-column-start: 1; /* starting from first column */
+    grid-column-end: 3; /* ending from third column */
+    grid-column: 1/4; /* starting from first ending at fourth starting */
+    grid-column: 1/ span 2; /* starting from first and ending at third starting */
+    grid-row-start: 1; /* starting from first row */
+    grid-row-end: 3; /* ending from third row */
+    grid-row: 1/4; /* starting from first row and ending at fourth starting */
+    grid-row: 1/ span 2; /* starting from first and ending at third starting */
+    /* justify-item container, justify-self item */
+    /* align-item container, align-self item */
+    /* place is combine justify and align, place-item container, place-self item */
+    display: inline-grid; /* its inline */
+}
+.item {
+    animation-name: identifier; /* name what i created animation random name */
+    animation-duration: 4s; /* duration 4 second */
+    animation-timing-function: ease-in-out; /* timing function */
+    animation-delay: 2s; /* delay 2 second */
+    animation-iteration-count: infinite; /* infinite loop */
+    animation-direction: alternate; /* alternate direction start reverse */
+    animation-fill-mode: forwards; /* forwards fill mode */
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+@keyframes identifier {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: green;
+    }
+}
+@keyframes identifier { /* animation template blueprint */
+    0% {
+        background-color: red;
+    }
+    50% {
+        background-color: yellow;
+    }
+    100% {
+        background-color: green;
+    }
+}
+@media screen and (max-width: 600px) { /* media query is use for responsiveness */
+    /* css for mobile */
+    h1{background-color: red;}
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    /* css for tablet */
+    h1{background-color: yellow;}
+}
+@media screen and (min-width: 1025px) {
+    /* css for desktop */
+    h1{background-color: green;}
+}
+@media (orientation: landscape) {
+    /* css for landscape */
+    h1{background-color: blue;}
+}
