@@ -21,6 +21,7 @@
     /* align-item container, align-self item */
     /* place is combine justify and align, place-item container, place-self item */
     display: inline-grid; /* its inline */
+    z-index: 1; /* z-index if its positive then show first only work on position relative or absolute */
 }
 .item {
     animation-name: identifier; /* name what i created animation random name */
