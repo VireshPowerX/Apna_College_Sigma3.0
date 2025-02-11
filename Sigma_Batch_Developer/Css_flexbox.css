@@ -37,9 +37,9 @@
     align-self: baseline; /* flex-start, flex-end, center, baseline, stretch */
     /*flex basis is apply on flex-direction*/
     flex-basis: 100px; /* auto, 100px, 50%, 1fr */
-    flex-grow: 1; /* 0, 1, 2, 3 */
+    flex-grow: 1; /* size increase */
     min-width: 400px; /* 100px, 50%, 1fr */
-    flex-shrink: 1; /* 0, 1, 2, 3 */
+    flex-shrink: 1; /* size decrease */
     flex: 1 1 100px; /* flex-grow, flex-shrink, flex-basis */
     flex: 1 100px; /* flex-grow, flex-basis */
     flex: 1; /* flex-grow */
