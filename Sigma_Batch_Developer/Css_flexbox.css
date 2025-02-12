@@ -31,15 +31,15 @@
     align-content: space-evenly; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
     align-content: baseline; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
     /*align-self are apply and ignore align-items*/
-    align-self: flex-start; /* flex-start, flex-end, center, baseline, stretch */
-    align-self: flex-end; /* flex-start, flex-end, center, baseline, stretch */
-    align-self: center; /* flex-start, flex-end, center, baseline, stretch */
-    align-self: baseline; /* flex-start, flex-end, center, baseline, stretch */
+    align-self: flex-start; /* normal */
+    align-self: flex-end; /* reverse */
+    align-self: center; /* space distribute */
+    align-self: baseline; /* flex text align height width */
     /*flex basis is apply on flex-direction*/
-    flex-basis: 100px; /* auto, 100px, 50%, 1fr */
-    flex-grow: 1; /* size increase */
-    min-width: 400px; /* 100px, 50%, 1fr */
-    flex-shrink: 1; /* size decrease */
+    flex-basis: 100px; /* flex-grow and flex-shrink */
+    flex-grow: 1; /* size increase default 1 */
+    min-width: 400px; /* its fix width given */
+    flex-shrink: 1; /* size decrease default 1 */
     flex: 1 1 100px; /* flex-grow, flex-shrink, flex-basis */
     flex: 1 100px; /* flex-grow, flex-basis */
     flex: 1; /* flex-grow */
