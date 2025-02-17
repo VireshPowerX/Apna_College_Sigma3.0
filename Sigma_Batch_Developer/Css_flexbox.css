@@ -1,0 +1,47 @@
+/*flexbox are reponsive website make*/
+.container {
+    display: flex;
+    flex-direction: row; /* column, row, row-reverse, column-reverse */
+    flex-direction: column; /* column, row, row-reverse, column-reverse */
+    flex-direction: row-reverse; /* column, row, row-reverse, column-reverse */
+    flex-direction: column-reverse; /* column, row, row-reverse, column-reverse */
+    flex-wrap: nowrap; /* nowrap, wrap, wrap-reverse */
+    flex-wrap: wrap; /* nowrap, wrap, wrap-reverse */
+    flex-wrap: wrap-reverse; /* nowrap, wrap, wrap-reverse */
+    align-content: flex-start; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: flex-end; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: center; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: space-between; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    justify-content: flex-start; /* flex-start, flex-end, center, space-between, space-around */
+    justify-content: flex-end; /* flex-start, flex-end, center, space-between, space-around */
+    justify-content: center; /* flex-start, flex-end, center, space-between, space-around */
+    justify-content: space-between; /* flex-start, flex-end, center, space-between, space-around */
+    justify-content: space-around; /* flex-start, flex-end, center, space-between, space-around */
+    justify-content: space-evenly; /* flex-start, flex-end, center, space-between, space-around */
+    align-items: flex-start; /* flex-start, flex-end, center, baseline, stretch */
+    align-items: flex-end; /* flex-start, flex-end, center, baseline, stretch */
+    align-items: center; /* flex-start, flex-end, center, baseline, stretch */
+    align-items: baseline; /* flex-start, flex-end, center, baseline, stretch */
+    align-items: stretch; /* flex-start, flex-end, center, baseline, stretch */
+    align-content: center; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: flex-start; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: flex-end; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: space-between; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: space-around; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: space-evenly; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    align-content: baseline; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    /*align-self are apply and ignore align-items*/
+    align-self: flex-start; /* normal */
+    align-self: flex-end; /* reverse */
+    align-self: center; /* space distribute */
+    align-self: baseline; /* flex text align height width */
+    /*flex basis is apply on flex-direction*/
+    flex-basis: 100px; /* flex-grow and flex-shrink */
+    flex-grow: 1; /* size increase default 1 */
+    min-width: 400px; /* its fix width given */
+    flex-shrink: 1; /* size decrease default 1 */
+    flex: 1 1 100px; /* flex-grow, flex-shrink, flex-basis */
+    flex: 1 100px; /* flex-grow, flex-basis */
+    flex: 1; /* flex-grow */
+    flex: 100px; /* flex-basis */
+}
