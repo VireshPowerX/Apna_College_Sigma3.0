@@ -1,35 +1,35 @@
 /*flexbox are reponsive website make*/
 .container {
-    display: flex;
-    flex-direction: row; /* column, row, row-reverse, column-reverse */
-    flex-direction: column; /* column, row, row-reverse, column-reverse */
-    flex-direction: row-reverse; /* column, row, row-reverse, column-reverse */
-    flex-direction: column-reverse; /* column, row, row-reverse, column-reverse */
-    flex-wrap: nowrap; /* nowrap, wrap, wrap-reverse */
-    flex-wrap: wrap; /* nowrap, wrap, wrap-reverse */
-    flex-wrap: wrap-reverse; /* nowrap, wrap, wrap-reverse */
-    align-content: flex-start; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: flex-end; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: center; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: space-between; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    justify-content: flex-start; /* flex-start, flex-end, center, space-between, space-around */
-    justify-content: flex-end; /* flex-start, flex-end, center, space-between, space-around */
-    justify-content: center; /* flex-start, flex-end, center, space-between, space-around */
-    justify-content: space-between; /* flex-start, flex-end, center, space-between, space-around */
-    justify-content: space-around; /* flex-start, flex-end, center, space-between, space-around */
-    justify-content: space-evenly; /* flex-start, flex-end, center, space-between, space-around */
-    align-items: flex-start; /* flex-start, flex-end, center, baseline, stretch */
-    align-items: flex-end; /* flex-start, flex-end, center, baseline, stretch */
-    align-items: center; /* flex-start, flex-end, center, baseline, stretch */
-    align-items: baseline; /* flex-start, flex-end, center, baseline, stretch */
-    align-items: stretch; /* flex-start, flex-end, center, baseline, stretch */
-    align-content: center; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: flex-start; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: flex-end; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: space-between; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: space-around; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: space-evenly; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
-    align-content: baseline; /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+    display: flex; /* its display to flex */
+    flex-direction: row; /* row wise flex distribution */
+    flex-direction: column; /* column wise flex distribution */
+    flex-direction: row-reverse; /* row wise reverse flex distribution */
+    flex-direction: column-reverse; /* column wise reverse flex distribution */
+    flex-wrap: nowrap; /* normal default */
+    flex-wrap: wrap; /* auto arrange row and column space distribution */
+    flex-wrap: wrap-reverse; /* auto arrange row and column space distribution reverse */
+    align-content: flex-start; /* content space distribution where all content from start with wrap */
+    align-content: flex-end; /* content space distribution where all content from end with wrap */
+    align-content: center; /* content space distribution where all content from center with wrap */
+    align-content: space-between; /* content space distribution where all content from space between with wrap */
+    justify-content: flex-start; /* in horizontal items distribution from start */
+    justify-content: flex-end; /* in horizontal items distribution from end */
+    justify-content: center; /* in horizontal items distribution from center */
+    justify-content: space-between; /* in horizontal items distribution from space between */
+    justify-content: space-around; /* in horizontal items distribution from space around */
+    justify-content: space-evenly; /* in horizontal items distribution from space evenly */
+    align-items: flex-start; /*  */
+    align-items: flex-end; /*  */
+    align-items: center; /*  */
+    align-items: baseline; /*  */
+    align-items: stretch; /*  */
+    align-content: center; /*  */
+    align-content: flex-start; /*  */
+    align-content: flex-end; /*  */
+    align-content: space-between; /*  */
+    align-content: space-around; /*  */
+    align-content: space-evenly; /*  */
+    align-content: baseline; /*  */
     /*align-self are apply and ignore align-items*/
     align-self: flex-start; /* normal */
     align-self: flex-end; /* reverse */
