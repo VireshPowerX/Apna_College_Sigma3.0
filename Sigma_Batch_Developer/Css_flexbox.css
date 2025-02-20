@@ -18,18 +18,18 @@
     justify-content: space-between; /* in horizontal items distribution from space between */
     justify-content: space-around; /* in horizontal items distribution from space around */
     justify-content: space-evenly; /* in horizontal items distribution from space evenly */
-    align-items: flex-start; /*  */
-    align-items: flex-end; /*  */
-    align-items: center; /*  */
-    align-items: baseline; /*  */
-    align-items: stretch; /*  */
-    align-content: center; /*  */
-    align-content: flex-start; /*  */
-    align-content: flex-end; /*  */
-    align-content: space-between; /*  */
-    align-content: space-around; /*  */
-    align-content: space-evenly; /*  */
-    align-content: baseline; /*  */
+    align-items: flex-start; /* in vertically items distribution from space start */
+    align-items: flex-end; /* in vertically items distribution from space end */
+    align-items: center; /* in vertically items distribution from space center */
+    align-items: baseline; /* in vertically items distribution from space baseline */
+    align-items: stretch;  /* in vertically items distribution from space stretch */
+    align-content: center; /* in vertically items distribution from space center */
+    align-content: flex-start; /* in vertically items distribution from space start */
+    align-content: flex-end; /* in vertically items distribution from space end */
+    align-content: space-between; /* in vertically items distribution from space between */
+    align-content: space-around; /* in vertically items distribution from space around */
+    align-content: space-evenly; /* in vertically items distribution from space evenly */
+    align-content: baseline; /* in vertically items distribution from space baseline */
     /*align-self are apply and ignore align-items*/
     align-self: flex-start; /* normal */
     align-self: flex-end; /* reverse */
