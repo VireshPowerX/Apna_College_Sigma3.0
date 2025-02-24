@@ -219,7 +219,27 @@ a {
 
 .album {
     width: 25%;
-    /* background-color: pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+}
+
+.album div {
+    margin-right: 1rem;
+    flex-wrap: wrap;
+}
+
+.album i {
+    margin-right: 1rem;
+    opacity: 0.7;
+    margin-top: 1rem;
 }
 
 .player {
