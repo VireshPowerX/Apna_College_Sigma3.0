@@ -233,23 +233,37 @@ a {
 
 .album div {
     margin-right: 1rem;
-    flex-wrap: wrap;
+    margin-top: 0.25rem;
+}
+
+.album .card-info {
+    font-size: 0.75rem;
+    opacity: 0.7;
 }
 
 .album i {
     margin-right: 1rem;
-    opacity: 0.7;
     margin-top: 1rem;
 }
 
 .player {
     width: 50%;
-    /* background-color: orange; */
 }
 
 .controls {
     width: 25%;
-    /* background-color: green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controller {
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+.controller i {
+    margin-right: 1rem;
 }
 
 .player-controls {
