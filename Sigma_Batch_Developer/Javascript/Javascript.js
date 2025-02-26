@@ -1,0 +1,1 @@
+/* Comments in javascript and css are same but in html <!-- Comments in html --> */
