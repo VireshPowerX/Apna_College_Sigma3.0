@@ -29,3 +29,35 @@ students.pop(); // Remove the last element from the array
 students.unshift("Ramesh"); // Add Ramesh at the beginning of the array
 students.shift(); // Remove the first element from the array
 students.indexOf("Rohit"); // 2
+students.indexOf("rohit"); // -1
+students.includes("Rohit"); // true
+students.includes("rohit"); // false
+let teachers = ["Ramesh", "Suresh", "Rajesh", "Rohit"];
+students.concat(teachers); // Combine students and teachers array its not change original array
+students.reverse(); // Reverse the array its change original array
+students.slice(); // Copy the array its not change original array
+students.slice(1); // Copy the array from 1 index
+students.slice(1, 3); // Copy the array from 1 to 3 index
+students.slice(-2); // Copy the last 2 elements from the array
+teachers.splice(1, 2); // Remove 2 elements from 1 index
+teachers.splice(1, 2, "Rahul", "Rohit"); // Remove 2 elements from 1 index and add Rahul and Rohit
+teachers.splice(2); // Remove all elements from 2 index
+teachers.sort(); // Sort the array
+teachers.sort().reverse(); // Sort the array in reverse order
+let marks = [100,50,90,80,20,30,70]; 
+marks.sort(); // [100, 20, 30, 50, 70, 80, 90]
+let arr = [1,2,3,4,5];
+let arr1 = arr; // This will not work as it will change the original array
+arr1 === arr; // true
+arr1 = [6, 7, 8, 9, 10]; // This will work as it will not change the original array
+arr1 === arr; // false
+const arr2 = [1,2,3,4,5];
+arr2[0] = 6; // This will work as arrays are mutable
+arr2; // [6, 2, 3, 4, 5]
+arr2 = [6, 7, 8, 9, 10]; // This will not work as arrays are mutable
+let arr3 = [[1,2,3],[4,5,6],[7,8,9]];
+arr3[1][2]; // 6
+let arr4 = ["hello", 'a', 28, 64, 99, -6]; 
+let item = 64; 
+if (arr4.indexOf(item) != -1) {console.log("its exists in array");} // item if not found then return -1 not equal to -1 condition true 
+else {console.log("not exists in array");} // its exists in array
