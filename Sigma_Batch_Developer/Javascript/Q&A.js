@@ -4,7 +4,6 @@ function reverseString(str) {
     for (let i = 0; i < str.length; i++) {
       arr[i] = str[str.length - 1 - i];
     }
-   
     let reversedStr = arr.join('');
     return reversedStr;
   }
@@ -15,7 +14,6 @@ function reverseString(str) {
     for (let i = 0; i < str.length; i++) {
       arr[i] = str[str.length - 1 - i];
     }
-   
     let reversedStr = arr.join('');
     return reversedStr;
   }  
@@ -67,7 +65,6 @@ function makePalindrome(str) {
 // Nested Array sum
 function sumNestedArray(numbers1) {
     let sum = 0; // Initialize sum
-  
     for (let i = 0; i < numbers1.length; i++) { // Loop through main array
       for (let j = 0; j < numbers1[i].length; j++) { // Loop through inner arrays
         sum += numbers1[i][j]; // Add the value to sum
