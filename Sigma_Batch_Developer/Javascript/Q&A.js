@@ -125,53 +125,57 @@ while (input1 !== 'quit') {
 }
 console.log("Quit the program.");
 
+// Write a function that finds the most repeated element in an array.
+function mostFrequent(arr) {
+  const count = {}; // Object to store the frequency of each element
+  let maxCount = 0; // Variable to store the maximum frequency
+  let maxElement; // Variable to store the element with the maximum frequency
+  // Count the occurrences of each element
+  for (let num of arr) {
+    count[num] = (count[num] || 0) + 1;
+    // Update the element with the maximum frequency
+    if (count[num] > maxCount) {
+      maxCount = count[num];
+      maxElement = num;
+    }
+  }
+  return maxElement;
+}
+console.log(mostFrequent([1, 2, 3, 2, 4, 2, 5, 1, 3, 2])); // Output: 2
 
+function mostFrequent(arr) {
+  const count = {};
+  let maxCount = 0;
+  let maxElements = [];
+  for (let num of arr) {
+    count[num] = (count[num] || 0) + 1;
+    if (count[num] > maxCount) {
+      maxCount = count[num];
+      maxElements = [num]; // Reset with new max element
+    } else if (count[num] === maxCount) {
+      maxElements.push(num); // Add if same max count
+    }
+  }
+  return maxElements.length === 1 ? maxElements[0] : maxElements;
+}
+console.log(mostFrequent([1, 2, 3, 2, 4, 2, 5, 1, 3, 1])); // Output: [2, 1]
 
-  Challenge 2: Find the Most Frequent Element in an Array
-Write a function that finds the most repeated element in an array.
+// Write a function that removes duplicate values from an array.
+function removeDuplicates(arr) {
+  return [...new Set(arr)]; // Convert to Set to remove duplicates
+}
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5, 6, 6])); // Output: [1, 2, 3, 4, 5, 6] 
+// Set is an object that stores unique values of any type.
+// Set is faster (better performance for large arrays).
 
-Example Input:
-javascript
-Copy
-Edit
-mostFrequent([1, 2, 3, 2, 4, 2, 5, 1, 3, 2]);
-Expected Output:
-javascript
-Copy
-Edit
-2
-💡 Hint: Use an object to count occurrences.
+function removeDuplicates(arr) {
+  return arr.filter((value, index, self) => self.indexOf(value) === index); // Filter unique values
+}
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5, 6, 6])); // Output: [1, 2, 3, 4, 5, 6] 
+// The filter method creates a new array with elements that pass the test implemented by the provided function.
+// filter() works without Set but is slower (since indexOf checks the array multiple times).
 
-Challenge 3: Remove Duplicates From an Array
-Write a function that removes duplicate values from an array.
-
-Example Input:
-javascript
-Copy
-Edit
-removeDuplicates([1, 2, 2, 3, 4, 4, 5, 6, 6]);
-Expected Output:
-javascript
-Copy
-Edit
-[1, 2, 3, 4, 5, 6]
-💡 Hint: Use a Set or filter method.
-
-:
-
-🔥 The Tricky One-Liner 🔥
-Write a one-liner function that checks if two words are anagrams (contain the same letters in different orders).
-
-Example:
-
-js
-Copy
-Edit
+// Write a one-liner function that checks if two words are anagrams (contain the same letters in different orders).
+const isAnagram = (str1, str2) => [...str1].sort().join('') === [...str2].sort().join('');
 console.log(isAnagram("listen", "silent")); // true
-console.log(isAnagram("hello", "world")); // false
-Rules:
-
-No loops (for, while, etc.)
-No .map() or .forEach()
-Use only string & array methods
-Let’s see if you dodge or conquer this! 😏
+console.log(isAnagram("hello", "world"));   // false
