@@ -65,3 +65,19 @@ Math.ceil(4.7); // 5 round up to the nearest integer
 Math.floor(4.2); // 4 round down to the nearest integer
 let num = 0; Math.floor(Math.random()*10)+1; // 1 to 10 random number generate
 Math.floor(Math.random()*5)+21; //generate random number 21 to 25
+// Guess the number
+const max = prompt("Enter the max number"); 
+const random = Math.round(Math.random() * max) + 1; 
+let guess = prompt("Enter the guess number"); 
+while (true) {
+    if(guess == "quit") { 
+        console.log("Quit the program"); 
+        break;
+    } if(guess == random){
+        console.log("Congratulation you guess right number was : "+ random); 
+        break;
+    } else if(guess < random){
+        guess = prompt("You guess small number. Please try again");
+    } else {
+        guess = prompt("You guess large number. Please try again");
+    }}
