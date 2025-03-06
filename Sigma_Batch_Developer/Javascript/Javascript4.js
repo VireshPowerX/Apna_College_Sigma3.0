@@ -50,5 +50,18 @@ arr[0].age = 30; // change the value of a property
 //The Math object provides mathematical constants and functions. It is not a function object.
 Math
 //Math.PI is pie, Math.E is Euler's number, Math.SQRT2 is the square root of 2, Math.SQRT1_2 is the square root of 1/2, Math.LN2 is the natural logarithm of 2, Math.LN10 is the natural logarithm of 10, Math.LOG2E is the base 2 logarithm of E, Math.abs() returns the absolute value of a number, Math.ceil() rounds a number up to the nearest integer, Math.floor() rounds a number down to the nearest integer, Math.round() rounds a number to the nearest integer, Math.max() returns the largest of zero or more numbers, Math.min() returns the smallest of zero or more numbers, Math.pow() returns the base to the exponent power, Math.sqrt() returns the square root of a number, Math.random() returns a random number between 0 and 1.
-let num = 0; Math.floor(Math.random(num)*10)+1; // 1 to 10 randome number generate
-Math.floor(Math.random(num)*5)+21; //generate random number 21 to 25
+Math.PI; // 3.141592653589793 Properties
+Math.E; // 2.718281828459045 Properties
+Math.abs(-4); // 4 absolute form positive number convert always
+Math.round(4.5); // 5 round to the nearest integer 4.4 round to 4
+Math.round(-4.5); // -4 round to the nearest integer -4.6 round to -5
+Math.sqrt(16); // 4 square root of 16
+Math.pow(2, 4); // 16 power of 2^4 = 2*2*2*2 = 16
+Math.max(1, 2, 3, 4, 5); // 5 largest number
+Math.min(1, 2, 3, 4, 5); // 1 smallest number
+Math.random(); // random number between 0 and 1
+Math.random() * 10; // random number between 0 and 10
+Math.ceil(4.7); // 5 round up to the nearest integer
+Math.floor(4.2); // 4 round down to the nearest integer
+let num = 0; Math.floor(Math.random()*10)+1; // 1 to 10 random number generate
+Math.floor(Math.random()*5)+21; //generate random number 21 to 25
