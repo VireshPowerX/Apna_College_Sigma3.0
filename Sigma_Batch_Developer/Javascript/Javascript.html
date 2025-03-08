@@ -3,48 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript</title>
+    <title>Javascript</title> <!-- Title of the webpage -->
 </head>
 <body>
     <h2>Data Types in JS</h2>
+    
+    <!-- Primitive Data Types -->
     <h4>Primitive Types</h4>
     <ul>
-        <li>Number</li>
-        <li>String</li>
-        <li>Boolean</li>
-        <li>Undefined</li>
-        <li>Null</li>
-        <li>Symbol</li>
-        <li>BigInt</li>
+        <li>Number</li> <!-- Represents numerical values -->
+        <li>String</li> <!-- Represents text values -->
+        <li>Boolean</li> <!-- Represents true or false values -->
+        <li>Undefined</li> <!-- A variable that has been declared but not assigned a value -->
+        <li>Null</li> <!-- Represents an empty or non-existent value -->
+        <li>Symbol</li> <!-- Used to create unique identifiers -->
+        <li>BigInt</li> <!-- Used for large integer values beyond Number limit -->
     </ul>
+    
+    <!-- Reference Data Types -->
     <h4>Reference Types</h4>
     <ul>
-        <li>Object</li>
-        <li>Array</li>
-        <li>Function</li>
+        <li>Object</li> <!-- A collection of key-value pairs -->
+        <li>Array</li> <!-- A list-like data structure -->
+        <li>Function</li> <!-- A block of code that performs a specific task -->
     </ul>
+    
     <h2>Variables</h2>
+    
+    <!-- Variable Declarations -->
     <h4>var</h4>
-    <p>var is function scoped</p>
+    <p>var is function scoped</p> <!-- Can be redeclared and updated within the same function scope -->
+    
     <h4>let</h4>
-    <p>let is block scoped</p>
+    <p>let is block scoped</p> <!-- Can be updated but not redeclared in the same scope -->
+    
     <h4>const</h4>
-    <p>const is block scoped and cannot be reassigned</p>
+    <p>const is block scoped and cannot be reassigned</p> <!-- Once assigned, it cannot be changed -->
+    
     <h2>Operators</h2>
+    
+    <!-- Arithmetic Operators -->
     <h4>Arithmetic Operators</h4>
     <ul>
         <li>+</li> <!-- Addition -->
         <li>-</li> <!-- Subtraction -->
         <li>*</li> <!-- Multiplication -->
         <li>/</li> <!-- Division -->
-        <li>%</li> <!-- Modulus 9%2=1 its use for even and odd -->
+        <li>%</li> <!-- Modulus (9%2 = 1), used for even/odd checking -->
         <li>++</li> <!-- Increment -->
         <li>--</li> <!-- Decrement -->
-        <li>**</li> <!-- Exponentiation 2**3=8 its use for power -->
-        <li>NaN</li> <!-- Not a Number 0/0 NaN-1 NaN*1 NaN+NaN -->
+        <li>**</li> <!-- Exponentiation (2**3 = 8), used for power calculations -->
+        <li>NaN</li> <!-- Not a Number (e.g., 0/0, NaN-1, NaN*1, NaN+NaN) -->
     </ul>
+    
+    <!-- Operator Precedence -->
     <h4>Operator Precedence</h4>
-    <h6>BODMAS is an acronym and it stands for Bracket, Order, Division, Multiplication, Addition, and Subtraction left to right calculate </h6>
+    <h6>BODMAS stands for Bracket, Order, Division, Multiplication, Addition, and Subtraction.</h6> <!-- Calculation follows this order from left to right -->
+    
+    <!-- Assignment Operators -->
     <h4>Assignment Operators</h4>
     <ul>
         <li>=</li> <!-- Assignment -->
@@ -54,23 +70,31 @@
         <li>/=</li> <!-- Division Assignment -->
         <li>%=</li> <!-- Modulus Assignment -->
     </ul>
-    <h4>Uninary Operators</h4>
+    
+    <!-- Unary Operators -->
+    <h4>Unary Operators</h4>
     <ul>
-        <li>+</li> <!-- +3=3 -->
-        <li>-</li> <!-- -3=-3 -->
-        <li>++</li> <!-- Increment -->
-        <li>--</li> <!-- Decrement -->
-        <li>!</li> <!-- Logical Not -->
+        <li>+</li> <!-- Converts value to number (e.g., +"3" = 3) -->
+        <li>-</li> <!-- Negates value (e.g., -3 = -3) -->
+        <li>++</li> <!-- Increments value by 1 -->
+        <li>--</li> <!-- Decrements value by 1 -->
+        <li>!</li> <!-- Logical NOT (negates boolean values) -->
     </ul>
-    <h6>type can be change boolean to number in javascript any variables </h6>
-    <h6>javascript is dynamic typed means any variable type can change </h6>
-    <h6>string are written in "" or '' number or words or empty </h6>
-    <h6>string "" is 0 " " is 1 </h6>
-    <h6>let name = "Tony"; name[0] is T and name[3] is y or name[name.length-1] is y name.length is 4 </h6>
-    <h6>name[name.length] is undefined bcz 4 position undefined </h6>
-    <h6>calculate Tony is 0123 position but total 4 as a name.length </h6>
-    <h6>Concatenation means "Tony"+" "+"Stark" is Tony Stark or "Tony"+1 is Tony1 </h6>
-    <h6>keywords are true,false,null mention in variable but undefined is did not know its not keyword </h6>
-    <h6>let name = null; we can define it afterwards name any </h6>
+    
+    <!-- Type Behavior in JavaScript -->
+    <h6>Type can change (boolean to number) in JavaScript.</h6>
+    <h6>JavaScript is dynamically typed, meaning variable types can change.</h6>
+    <h6>Strings are written in "" or '' and can contain numbers, words, or be empty.</h6>
+    <h6>An empty string "" is treated as 0, while a space " " is treated as 1.</h6>
+    
+    <!-- String Operations -->
+    <h6>let name = "Tony"; name[0] is 'T', name[3] is 'y', name[name.length-1] is 'y'. name.length is 4.</h6>
+    <h6>name[name.length] is undefined because the index 4 does not exist.</h6>
+    <h6>"Tony" has positions 0,1,2,3 but total length is 4 (name.length).</h6>
+    <h6>Concatenation: "Tony" + " " + "Stark" = "Tony Stark" or "Tony" + 1 = "Tony1".</h6>
+    
+    <!-- Keywords in JavaScript -->
+    <h6>Keywords: true, false, null can be assigned to variables, but undefined is not a keyword.</h6>
+    <h6>let name = null; We can define it afterwards.</h6>
 </body>
 </html>
