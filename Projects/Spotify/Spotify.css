@@ -1,114 +1,311 @@
-/* Spotify Clone - Improved CSS */
-
-/* General Styles */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #121212;
-    color: white;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
-    padding: 0;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 250px;
     background-color: #000;
-    height: 100vh;
-    position: fixed;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-.sidebar a {
-    text-decoration: none;
-    color: #b3b3b3;
-    font-size: 16px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    transition: 0.3s;
-}
-.sidebar a:hover {
     color: #fff;
-    background-color: #282828;
-    border-radius: 5px;
+    overflow: hidden;
 }
 
-/* Main Content */
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-}
-.header {
+.main {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-.search-box input {
-    background: #282828;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    color: white;
+    height: 100vh;
+    padding: 0.5rem;
 }
 
-/* Playlist Section */
-.playlist {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-.playlist-item {
-    background: #181818;
-    padding: 15px;
-    border-radius: 10px;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.playlist-item:hover {
-    background: #282828;
-}
-.playlist-item img {
-    width: 100%;
-    border-radius: 8px;
+.sidebar {
+    background-color: #000;
+    width: 340px;
+    border-radius: 1rem; /* 16px */
+    margin-right: 0.5rem;
+
 }
 
-/* Music Player */
+.main-content {
+    background-color: #121212;
+    flex: 1;
+    border-radius: 1rem;
+    overflow: auto;
+    padding: 0 1.5rem 0 1.5rem;
+}
+
 .music-player {
+    background-color: black;
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    background: #181818;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-}
-.player-controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.player-controls button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-}
-.player-controls button:hover {
-    color: #1db954;
+    height: 72px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100px;
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav {
+    background-color: #121212;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+    padding: 0.5rem 0.75rem;
+}
+
+.nav-option {
+    line-height: 2.5rem;
+    opacity: 0.7;
+    padding: 0.5rem 0.75rem;
+}
+
+.nav-option:hover {
+    opacity: 1;
+}
+
+.nav-option i {
+    font-size: 1.25rem;
+}
+
+.nav-option a {
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.library {
+    background-color: #121212;
+    border-radius: 1rem;
+    height: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lib-option img {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.icons {
+    font-size: 1.25rem;
+    display: flex;
+}
+
+.icons i {
+    opacity: 0.7;
+    margin-right: 1rem;
+}
+
+.icons i:hover {
+    opacity: 1;
+}
+
+.box {
+    background-color: #232323;
+    height: 8rem;
+    border-radius: 0.75rem;
+    margin: 0.75rem 0 1.75rem 0;
+    padding: 0.75rem 1rem;
+}
+
+.box-p1 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.box-p2 {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.badge {
+    background-color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 0.25rem 1rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: fit-content;
+}
+
+.dark-badge {
+    background-color: #000;
+    color: #fff;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    z-index: 10;
+}
+
+.sticky-nav-icons {
+    margin-left: 0.75rem;
+}
+
+.sticky-nav-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item {
+    margin-right: 1rem;
+}
+
+@media (max-width: 1000px) {
+    .hide {
+        display: none;
     }
-    .main-content {
-        margin-left: 100px;
-    }
+}
+
+
+.card {
+    background-color: #232323;
+    width: 150px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.card-info {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.footer {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line {
+    width: 90%;
+    height: 50%;
+    border-top: 1px solid white;
+    opacity: 0.4;
+}
+
+.music-player {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.album {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+}
+
+.album div {
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+}
+
+.album .card-info {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.album i {
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.player {
+    width: 50%;
+}
+
+.controls {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controller {
+    margin-right: 2rem;
+    margin-top: 1rem;
+}
+
+.controller i {
+    margin-right: 1rem;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-control-icon {
+    height: 1rem;
+    margin-right: 1.75rem;
+    opacity: 0.7;
+}
+
+.player-control-icon:hover {
+    opacity: 1;
+}
+
+.playback-bar {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.progress-bar {
+    width: 70%;
+    appearance: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.progress-bar::-webkit-slider-runnable-track {
+    background-color: #ddd;
+    border-radius: 100px;
+    height: 0.2rem;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    background-color: #1bd760;
+    border-radius: 50%;
+    margin-top: -6px;
 }
