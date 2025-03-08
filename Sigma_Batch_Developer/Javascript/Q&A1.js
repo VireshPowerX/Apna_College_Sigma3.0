@@ -1,181 +1,111 @@
-// JAVASCRIPT reverse a string
+// Function to reverse a string
 function reverseString(str) {
-    let arr = new Array(str.length);
-    for (let i = 0; i < str.length; i++) {
-      arr[i] = str[str.length - 1 - i];
-    }
-    let reversedStr = arr.join('');
-    return reversedStr;
+  let arr = new Array(str.length); // Create an array with the same length as the string
+  for (let i = 0; i < str.length; i++) {
+      arr[i] = str[str.length - 1 - i]; // Assign characters in reverse order
   }
-  console.log(reverseString("JAVASCRIPT")); // TPIRCSDAJ
+  let reversedStr = arr.join(''); // Convert array back to string
+  return reversedStr;
+}
+console.log(reverseString("JAVASCRIPT")); // Output: TPIRCSAVAJ ✅
 
-  function reverseString(str) {
-    let arr = new Array(str.length);
-    for (let i = 0; i < str.length; i++) {
-      arr[i] = str[str.length - 1 - i];
-    }
-    let reversedStr = arr.join('');
-    return reversedStr;
-  }  
-  console.log(reverseString("JAVASCRIPT")); // TPIRCSDAJ
+// Simplified approach to reverse a string using built-in methods
+const reversedString = "JAVASCRIPT".split('').reverse().join('');
+console.log(reversedString); // Output: TPIRCSAVAJ ✅
 
-  const reversedString = "JAVASCRIPT".split('').reverse().join('');
-console.log(reversedString); // TPIRCSDAJ
-
-// Palindrome string
+// Function to create a palindrome by appending the reverse of the string
 function makePalindrome(str) {
-    str = str.toLowerCase();
-    let reversed = '';
-    for (let i = str.length - 1; i >= 0; i--) {
-      reversed += str[i];
-    }
-    const palindrome = str + reversed;
-    return palindrome;
+  str = str.toLowerCase(); // Convert to lowercase for consistency
+  let reversed = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+      reversed += str[i]; // Build reversed string
   }
-  console.log(makePalindrome("hello")); // Output: "helloolleh"
-  console.log(makePalindrome("world")); // Output: "worlddlrow"
+  return str + reversed; // Concatenate original and reversed
+}
+console.log(makePalindrome("hello")); // Output: "helloolleh" ✅
+console.log(makePalindrome("world")); // Output: "worlddlrow" ✅
 
-  function isPalindrome(str) {
-    str = str.toLowerCase();
-    let cleanedStr = '';
-    for (let i = 0; i < str.length; i++) {
-      const char = str[i];
-      if (char >= 'a' && char <= 'z') {
-        cleanedStr += char;
-      }
-    }
-    let reversed = '';
-    for (let i = cleanedStr.length - 1; i >= 0; i--) {
-      reversed += cleanedStr[i];
-    }
-    return cleanedStr === reversed;
-  }
-  console.log(isPalindrome("racecar")); // Output: true
-  console.log(isPalindrome("level")); // Output: true
-  console.log(isPalindrome("hello")); // Output: false
+// Function to check if a string is a palindrome (ignoring case and non-alphabet characters)
+function isPalindrome(str) {
+  str = str.toLowerCase().replace(/[^a-z0-9]/g, ''); // Remove non-alphanumeric characters
+  return str === str.split('').reverse().join(''); // Compare string with its reverse
+}
+console.log(isPalindrome("racecar")); // Output: true ✅
+console.log(isPalindrome("A man, a plan, a canal, Panama")); // Output: true ✅
+console.log(isPalindrome("hello")); // Output: false ❌
 
-  function isPalindrome(str) {
-    str = str.toLowerCase().replace(/[^a-z0-9]/g, ''); 
-    return str === str.split('').reverse().join('');
-  }
-  console.log(isPalindrome("racecar")); // true
-  console.log(isPalindrome("A man, a plan, a canal, Panama")); // true
-  console.log(isPalindrome("hello")); // false
-
-// Nested Array sum
-function sumNestedArray(numbers1) {
-    let sum = 0; // Initialize sum
-    for (let i = 0; i < numbers1.length; i++) { // Loop through main array
-      for (let j = 0; j < numbers1[i].length; j++) { // Loop through inner arrays
-        sum += numbers1[i][j]; // Add the value to sum
-      }
-    } 
-    return sum;
-  }
-  const numbers1 = [
-    [1, 2, 3],
-    [4, 5],
-    [6, 7, 8, 9]
-  ];  
-  console.log(sumNestedArray(numbers1)); // Output: 45 ✅
-  
-  function sumNestedArray(numbers) {
-    let sum = 0; // Initialize sum
-    for (let i = 0; i < numbers.length; i++) { // Loop through main array
+// Function to sum all numbers in a nested array
+function sumNestedArray(numbers) {
+  let sum = 0; // Initialize sum
+  for (let i = 0; i < numbers.length; i++) { // Loop through outer array
       for (let j = 0; j < numbers[i].length; j++) { // Loop through inner arrays
-        sum += numbers[i][j]; // Add the value to sum
+          sum += numbers[i][j]; // Add each value to sum
       }
-    } 
-    return sum;
-  }
-  const numbers = [
-    [1, 2, 3],
-    [4, 5],
-    [6, 7, 8, 9]
-  ];  
-  console.log(sumNestedArray(numbers)); // Output: 45 ✅
-  
-// Todo List string 'add' 'delete' 'list' 'quit'
-let todo = []; // Make sure the array exists
-let input1 = prompt("Enter the commands");
-while (input1 !== 'quit') {
-  if (input1 === 'add') {
-    let item = prompt("Add to list");
-    todo.push(item);
-    console.log(`"${item}" added to your list.`);
-  } else if (input1 === 'delete') {
-    let item = prompt("Enter the item name to delete");
-    let index = todo.indexOf(item); // Find index of item
-    if (index !== -1) { // If item exists in array
-      todo.splice(index, 1); // Remove it
-      console.log(`"${item}" deleted from your list.`);
-    } else {
-      console.log(`"${item}" not found in your list.`);
-    }
-  } else if (input1 === 'list') {
-    console.log("***************");
-    for (let i = 0; i < todo.length; i++) {
-      console.log(`${i}: ${todo[i]}`);
-    }
-    console.log("***************");
+  } 
+  return sum;
+}
+const numbers = [
+  [1, 2, 3],
+  [4, 5],
+  [6, 7, 8, 9]
+];  
+console.log(sumNestedArray(numbers)); // Output: 45 ✅
+
+// Simple Todo List with 'add', 'delete', 'list', and 'quit' commands
+let todo = []; // Initialize an empty array
+let input = prompt("Enter a command: add, delete, list, quit");
+while (input !== 'quit') {
+  if (input === 'add') {
+      let item = prompt("Add item to list:");
+      todo.push(item); // Add item to array
+      console.log(`"${item}" added to your list.`);
+  } else if (input === 'delete') {
+      let item = prompt("Enter item to delete:");
+      let index = todo.indexOf(item); // Find index of item
+      if (index !== -1) {
+          todo.splice(index, 1); // Remove item if found
+          console.log(`"${item}" deleted from your list.`);
+      } else {
+          console.log(`"${item}" not found in your list.`);
+      }
+  } else if (input === 'list') {
+      console.log("***************");
+      for (let i = 0; i < todo.length; i++) {
+          console.log(`${i}: ${todo[i]}`);
+      }
+      console.log("***************");
   } else {
-    console.log("Invalid command. Use 'add', 'delete', 'list', or 'quit'.");
+      console.log("Invalid command. Use 'add', 'delete', 'list', or 'quit'.");
   }
-  input1 = prompt("Enter the commands"); // Ask again for next command
+  input = prompt("Enter a command: add, delete, list, quit"); // Ask again
 }
-console.log("Quit the program.");
+console.log("Exited Todo List.");
 
-// Write a function that finds the most repeated element in an array.
+// Function to find the most repeated element in an array
 function mostFrequent(arr) {
-  const count = {}; // Object to store the frequency of each element
-  let maxCount = 0; // Variable to store the maximum frequency
-  let maxElement; // Variable to store the element with the maximum frequency
-  // Count the occurrences of each element
-  for (let num of arr) {
-    count[num] = (count[num] || 0) + 1;
-    // Update the element with the maximum frequency
-    if (count[num] > maxCount) {
-      maxCount = count[num];
-      maxElement = num;
-    }
-  }
-  return maxElement;
-}
-console.log(mostFrequent([1, 2, 3, 2, 4, 2, 5, 1, 3, 2])); // Output: 2
-
-function mostFrequent(arr) {
-  const count = {};
+  const count = {}; // Object to store occurrences
   let maxCount = 0;
   let maxElements = [];
   for (let num of arr) {
-    count[num] = (count[num] || 0) + 1;
-    if (count[num] > maxCount) {
-      maxCount = count[num];
-      maxElements = [num]; // Reset with new max element
-    } else if (count[num] === maxCount) {
-      maxElements.push(num); // Add if same max count
-    }
+      count[num] = (count[num] || 0) + 1; // Increase count
+      if (count[num] > maxCount) {
+          maxCount = count[num];
+          maxElements = [num]; // Reset list with new max element
+      } else if (count[num] === maxCount) {
+          maxElements.push(num); // Add if frequency matches max
+      }
   }
   return maxElements.length === 1 ? maxElements[0] : maxElements;
 }
-console.log(mostFrequent([1, 2, 3, 2, 4, 2, 5, 1, 3, 1])); // Output: [2, 1]
+console.log(mostFrequent([1, 2, 3, 2, 4, 2, 5, 1, 3, 1])); // Output: [2, 1] ✅
 
-// Write a function that removes duplicate values from an array.
+// Function to remove duplicate values from an array
 function removeDuplicates(arr) {
-  return [...new Set(arr)]; // Convert to Set to remove duplicates
+  return [...new Set(arr)]; // Convert to Set (stores only unique values)
 }
-console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5, 6, 6])); // Output: [1, 2, 3, 4, 5, 6] 
-// Set is an object that stores unique values of any type.
-// Set is faster (better performance for large arrays).
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5, 6, 6])); // Output: [1, 2, 3, 4, 5, 6] ✅
 
-function removeDuplicates(arr) {
-  return arr.filter((value, index, self) => self.indexOf(value) === index); // Filter unique values
-}
-console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5, 6, 6])); // Output: [1, 2, 3, 4, 5, 6] 
-// The filter method creates a new array with elements that pass the test implemented by the provided function.
-// filter() works without Set but is slower (since indexOf checks the array multiple times).
-
-// Write a one-liner function that checks if two words are anagrams (contain the same letters in different orders).
+// One-liner function to check if two words are anagrams
 const isAnagram = (str1, str2) => [...str1].sort().join('') === [...str2].sort().join('');
-console.log(isAnagram("listen", "silent")); // true
-console.log(isAnagram("hello", "world"));   // false
+console.log(isAnagram("listen", "silent")); // Output: true ✅
+console.log(isAnagram("hello", "world")); // Output: false ❌
