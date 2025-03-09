@@ -1,67 +1,117 @@
-div {    /* comment */
-    /* div is selector and * is universal selector */
-    /* cascading style sheet tag last style declared */
-    /* more power declare that style */
-    /* selector speciality inline css is 1000 power id is 100 power class & pseudo-class is 10 power element & pseudo-element is 1 power */
-    color:indianred !important; /* !important override all style is 10000 power */
-    /* inherit parent style div in p in ul in li lets div red and p yellow declared but ul and li is red bcz css is inheritance */
-    /* button and input are declared inherit*/
+/* Universal & Element Selector */
+div {    
+    /* div is a selector, and * is a universal selector */
+    
+    /* CSS cascading rules:
+       - The last declared style takes priority.
+       - Inline CSS has the highest specificity (1000 power).
+       - ID selectors (#id) have 100 power.
+       - Classes (.class) and pseudo-classes (:hover) have 10 power.
+       - Elements (div, p) and pseudo-elements (::before) have 1 power. */
+    
+    /* !important overrides all styles with 10,000 power */
+    color: indianred !important; 
+    
+    /* Inheritance:
+       - If a div has color red and a <p> inside it has yellow,
+         any <ul> or <li> inside <p> will still inherit red due to CSS inheritance.
+       - However, <button> and <input> do not inherit styles by default. */
+    
     background-color: oldlace;
-    color: rgb(0, 0,0 ); /* rgb red green blue 0 to 255 */
-    color: #000000; /* hex hexadecimal 0 to f */
-    color: #000; /* hex short hand */
-    color: rgba(0, 0, 0, 0.5); /* rgba red green blue alpha 0 to 1 */
-    color: hsl(0, 100%, 50%); /* hsl hue saturation lightness 0 to 360 0% to 100% 0% to 100% */
-    color: hsla(0, 100%, 50%, 0.5); /* hsla hue saturation lightness alpha 0 to 1 */
-    text-align: center; /* left right center justify */
-    font-weight: 100; /* 100 200 300 400 500 600 700 800 900 bold */
-    text-decoration: underline; /* underline overline line-through none */
-    line-height: normal; /* normal 1.5 2em 200% */
-    letter-spacing: normal; /* normal 1px 0.1em */
-    font-size: large; /* xx-small x-small small medium large x-large xx-large smaller larger 10px 1em */
-    font-family: Arial, sans-serif; /* Arial sans-serif serif monospace cursive fantasy */}
-p  {    #myid {    /* id selector in css # */}
-    .myclass {    /* class selector in css . */}
-    .myclass.myclass2 {    /* multiple class selector in css . */}
-    p > span {    /* child selector in css p > span */}
-    p span {    /* descendant selector in css p span */}
-    p + span {    /* adjacent sibling selector in css p + span */}
-    p ~ span {    /* general sibling selector in css p ~ span */}
-    input[type="text"] {    /* attribute selector in css input[type="text"] */}
-    h1:hover {    /* hover pseudo-class when my mouse arrow hover its change style*/}
-    h1:nth-of-type(2) {    /* nth-of-type pseudo-class only 2 h1, every 2+2+... h1 */}
-    h1:active {    /* active pseudo-class every link click its active*/}
-    h1:checked {    /* checked pseudo-class checkbox radio*/}
-    h1::first-letter {    /* first-letter pseudo-element */}
-    h1::first-line {    /* first-line pseudo-element */}
-    h1::selection {    /* selection pseudo-element if i select and words */}
-    /* Box Model  */
+    
+    /* Color Properties */
+    color: rgb(0, 0, 0);  /* RGB (Red, Green, Blue) range: 0-255 */
+    color: #000000;       /* Hexadecimal (0-9, A-F) */
+    color: #000;          /* Hex shorthand */
+    color: rgba(0, 0, 0, 0.5); /* RGBA (Alpha = opacity) */
+    color: hsl(0, 100%, 50%);  /* HSL (Hue, Saturation, Lightness) */
+    color: hsla(0, 100%, 50%, 0.5); /* HSLA (Alpha) */
+
+    /* Typography */
+    text-align: center;  /* left | right | center | justify */
+    font-weight: 100;  /* 100 (thin) to 900 (bold) */
+    text-decoration: underline;  /* underline | overline | line-through | none */
+    line-height: normal;  /* normal | 1.5 | 2em | 200% */
+    letter-spacing: normal;  /* normal | 1px | 0.1em */
+    font-size: large;  /* xx-small | x-small | small | medium | large | x-large | xx-large */
+    font-family: Arial, sans-serif; /* Font families */
+}
+
+/* ID & Class Selectors */
+#myid { /* ID selector */ }
+.myclass { /* Class selector */ }
+.myclass.myclass2 { /* Multiple class selector */ }
+
+/* CSS Selectors */
+p > span { /* Child selector: selects direct child of <p> */ }
+p span { /* Descendant selector: selects any <span> inside <p> */ }
+p + span { /* Adjacent sibling: selects next <span> after <p> */ }
+p ~ span { /* General sibling: selects all <span> after <p> */ }
+input[type="text"] { /* Attribute selector */ }
+
+/* Pseudo-classes */
+h1:hover { /* When mouse hovers over h1 */ }
+h1:nth-of-type(2) { /* Targets every 2nd <h1> */ }
+h1:active { /* When an <h1> is clicked */ }
+h1:checked { /* When a checkbox or radio is selected */ }
+
+/* Pseudo-elements */
+h1::first-letter { /* First letter of h1 */ }
+h1::first-line { /* First line of h1 */ }
+h1::selection { /* Text selection styling */ }
+
+/* Box Model */
+p {  
     height: 200px;
     width: 200px;
-    margin: 10px; /* top right bottom left */
-    padding : 10px; /* top right bottom left */
-    border: 1px solid black; /* width style color */
-    border-top: 5px dashed black; /* top width style color border(top right bottom left)*/
-    border-radius: 10px; /* 10px 10px 10px 10px top-left top-right bottom-right bottom-left */
-    padding: 0% 10% 0% 10%; /* padding(top right bottom left) */
-    margin: 0% 10% 0% 10%; /* margin(top right bottom left) */
-    /* Display */
-    display: block; /* block inline inline-block none */
-    display: inline-block; /* block inline inline-block none */
-    display: inline; /* block inline inline-block none */
-    display: none; /* block inline inline-block none */
-    /* em is relative to the font-size of the element inherit size from other element */
-    /* rem is relative to the font-size of the root element */
-    /* % is relative to the font-size of the parent element */ 
-    color:rgba(0, 0, 0, 0.5); /* rgba red green blue alpha 0 to 1 */
-    opacity: 0.5; /* opacity is whole elment include sub element also blur 0 to 1 */
-    transition: all 1s; /* transition property duration timing-function delay fade in fade out effect */
-    transition-duration: 1s 1s; /* transition-duration property duration 1s effect 1s delay*/
-    transition: margin 1s ease-in 1s, padding 1s ease-out 1s; /* attribute effect style delay */
-    transform: rotate(45deg); /* rotate skew scale translate matrix */
-    /* clockwise 75deg anticlockwise -180 deg, slant 0-90deg, x and y axis size change, x and y axis position change -45px */
-    box-shadow: 10px 10px 5px 0px #888888; /* horizontal vertical blur spread color */
-    background-image: url('image.jpg'); /* file name */
-    background-size: contain; /* cover contain auto 100% 100% (repeat, crop, stretch, perfect size) */
-    position: relative; /* static relative absolute fixed sticky ()*/
+    margin: 10px;  /* Margin: top right bottom left */
+    padding: 10px; /* Padding: top right bottom left */
+    border: 1px solid black; /* Border: width, style, color */
+    border-top: 5px dashed black; /* Border (top) */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Display Properties */
+p {
+    display: block;        /* Default block display */
+    display: inline-block; /* Acts like inline but respects width/height */
+    display: inline;       /* No width/height, in line with text */
+    display: none;         /* Hides element */
+}
+
+/* Relative Sizing */
+p {
+    font-size: 1em; /* Relative to parent */
+    font-size: 1rem; /* Relative to root element */
+    width: 50%; /* Relative to parent element */
+}
+
+/* Opacity & Transitions */
+p {
+    opacity: 0.5; /* 0 = fully transparent, 1 = fully visible */
+    transition: all 1s; /* Smooth transition on all properties */
+    transition-duration: 1s; /* Effect duration */
+    transition: margin 1s ease-in 1s, padding 1s ease-out 1s; /* Multiple transitions */
+}
+
+/* Transformations */
+p {
+    transform: rotate(45deg); /* Rotates element */
+    transform: scale(1.5); /* Scales element */
+    transform: translateX(50px); /* Moves element */
+}
+
+/* Shadows & Background */
+p {
+    box-shadow: 10px 10px 5px 0px #888888; /* Adds shadow */
+    background-image: url('image.jpg'); /* Background image */
+    background-size: contain; /* Cover | Contain | Auto */
+}
+
+/* Positioning */
+p {
+    position: relative; /* Default (relative to normal flow) */
+    position: absolute; /* Positioned relative to nearest positioned ancestor */
+    position: fixed; /* Stays in place while scrolling */
+    position: sticky; /* Sticks when scrolling past */
 }

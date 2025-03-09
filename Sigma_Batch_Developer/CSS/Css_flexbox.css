@@ -1,47 +1,62 @@
-/*flexbox are reponsive website make*/
+/* Flexbox is used to create responsive layouts */
 .container {
-    display: flex; /* its display to flex */
-    flex-direction: row; /* row wise flex distribution */
-    flex-direction: column; /* column wise flex distribution */
-    flex-direction: row-reverse; /* row wise reverse flex distribution */
-    flex-direction: column-reverse; /* column wise reverse flex distribution */
-    flex-wrap: nowrap; /* normal default */
-    flex-wrap: wrap; /* auto arrange row and column space distribution */
-    flex-wrap: wrap-reverse; /* auto arrange row and column space distribution reverse */
-    align-content: flex-start; /* content space distribution where all content from start with wrap */
-    align-content: flex-end; /* content space distribution where all content from end with wrap */
-    align-content: center; /* content space distribution where all content from center with wrap */
-    align-content: space-between; /* content space distribution where all content from space between with wrap */
-    justify-content: flex-start; /* in horizontal items distribution from start */
-    justify-content: flex-end; /* in horizontal items distribution from end */
-    justify-content: center; /* in horizontal items distribution from center */
-    justify-content: space-between; /* in horizontal items distribution from space between */
-    justify-content: space-around; /* in horizontal items distribution from space around */
-    justify-content: space-evenly; /* in horizontal items distribution from space evenly */
-    align-items: flex-start; /* in vertically items distribution from space start */
-    align-items: flex-end; /* in vertically items distribution from space end */
-    align-items: center; /* in vertically items distribution from space center */
-    align-items: baseline; /* in vertically items distribution from space baseline */
-    align-items: stretch;  /* in vertically items distribution from space stretch */
-    align-content: center; /* in vertically items distribution from space center */
-    align-content: flex-start; /* in vertically items distribution from space start */
-    align-content: flex-end; /* in vertically items distribution from space end */
-    align-content: space-between; /* in vertically items distribution from space between */
-    align-content: space-around; /* in vertically items distribution from space around */
-    align-content: space-evenly; /* in vertically items distribution from space evenly */
-    align-content: baseline; /* in vertically items distribution from space baseline */
-    /*align-self are apply and ignore align-items*/
-    align-self: flex-start; /* normal */
-    align-self: flex-end; /* reverse */
-    align-self: center; /* space distribute */
-    align-self: baseline; /* flex text align height width */
-    /*flex basis is apply on flex-direction*/
-    flex-basis: 100px; /* flex-grow and flex-shrink */
-    flex-grow: 1; /* size increase default 1 */
-    min-width: 400px; /* its fix width given */
-    flex-shrink: 1; /* size decrease default 1 */
-    flex: 1 1 100px; /* flex-grow, flex-shrink, flex-basis */
-    flex: 1 100px; /* flex-grow, flex-basis */
-    flex: 1; /* flex-grow */
-    flex: 100px; /* flex-basis */
+    display: flex; /* Enables flexbox layout */
+
+    /* Flex Direction - Defines the main axis (row or column) */
+    flex-direction: row; /* Default: Items placed in a row (left to right) */
+    flex-direction: column; /* Items placed in a column (top to bottom) */
+    flex-direction: row-reverse; /* Items placed in a row but in reverse order */
+    flex-direction: column-reverse; /* Items placed in a column but in reverse order */
+
+    /* Flex Wrap - Controls whether flex items should wrap */
+    flex-wrap: nowrap; /* Default: Items stay in a single line (no wrapping) */
+    flex-wrap: wrap; /* Items wrap onto multiple lines if needed */
+    flex-wrap: wrap-reverse; /* Items wrap but in reverse order */
+
+    /* Align Content - Controls spacing between rows when flex-wrap is enabled */
+    align-content: flex-start; /* Rows align at the top */
+    align-content: flex-end; /* Rows align at the bottom */
+    align-content: center; /* Rows align at the center */
+    align-content: space-between; /* Rows are evenly spaced with no extra space at edges */
+    align-content: space-around; /* Rows have equal space around them */
+    align-content: space-evenly; /* Rows have equal spacing, including edges */
+
+    /* Justify Content - Aligns items along the main axis (horizontal if row, vertical if column) */
+    justify-content: flex-start; /* Items align at the start */
+    justify-content: flex-end; /* Items align at the end */
+    justify-content: center; /* Items align at the center */
+    justify-content: space-between; /* Items are evenly spaced with no space at edges */
+    justify-content: space-around; /* Items have equal space around them */
+    justify-content: space-evenly; /* Items have equal spacing, including edges */
+
+    /* Align Items - Aligns items along the cross axis (opposite of flex direction) */
+    align-items: flex-start; /* Items align at the start of the cross axis */
+    align-items: flex-end; /* Items align at the end of the cross axis */
+    align-items: center; /* Items align at the center of the cross axis */
+    align-items: baseline; /* Items align based on their text baseline */
+    align-items: stretch; /* Items stretch to fill the container (default) */
+
+    /* Align Self - Overrides align-items for a specific flex item */
+    align-self: flex-start; /* Aligns this item at the start */
+    align-self: flex-end; /* Aligns this item at the end */
+    align-self: center; /* Aligns this item at the center */
+    align-self: baseline; /* Aligns this item based on text baseline */
+
+    /* Flex Basis - Defines the initial size of a flex item */
+    flex-basis: 100px; /* Item starts with a width/height of 100px */
+
+    /* Flex Grow - Defines how much an item can grow compared to others */
+    flex-grow: 1; /* Item grows to fill available space (default 0, means no growth) */
+
+    /* Flex Shrink - Defines how much an item can shrink */
+    flex-shrink: 1; /* Item shrinks when space is limited (default 1) */
+
+    /* Min Width - Ensures items don’t shrink below a certain size */
+    min-width: 400px; /* Sets minimum width to 400px */
+
+    /* Short-hand flex property: flex-grow, flex-shrink, flex-basis */
+    flex: 1 1 100px; /* Grows, shrinks, and starts with 100px */
+    flex: 1 100px; /* Grows and starts with 100px */
+    flex: 1; /* Grows to fill available space */
+    flex: 100px; /* Only sets flex-basis */
 }
