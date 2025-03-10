@@ -1,1 +1,1 @@
-Sigma_Batch_Developer in this folder we learn Html, Css, .
+Sigma_Batch_Developer in this folder we learn Html, Css, JavaScript, .
