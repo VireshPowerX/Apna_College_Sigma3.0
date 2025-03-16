@@ -34,4 +34,3 @@ p.insertAdjacentElement("afterend",btn);
 btn.remove();
 p.remove();
 body.remove();
-
