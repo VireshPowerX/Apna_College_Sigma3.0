@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // variable and data-types if-else statements loops object literals functions now we merge this js with html and css
 // Dom Document object model logical tree
 // every html element convert into object js
@@ -13,7 +12,6 @@ document.querySelectorAll("p");
 p.innerText; // Shows the visible text contained in a node
 p.innerHTML; // Shows all the full text (display:hidden seen)
 p.textContent; // Shows the full markup (bold italic seen)
-=======
 document.getAttribute('id');
 document.setAttribute('id','myid');
 document.setAttribute('src',"imagepath");
@@ -50,4 +48,3 @@ p.insertAdjacentElement("afterend",btn);
 btn.remove();
 p.remove();
 body.remove();
->>>>>>> b6d5d9ecc1f15c3d604cd3f7218586a3327caf2b
