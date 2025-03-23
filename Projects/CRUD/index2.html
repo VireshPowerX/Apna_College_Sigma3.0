@@ -1,3 +1,4 @@
+<!-- To-Do List add/remove/no-duplicate task and save into localstorage -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -107,6 +108,14 @@
       btn.addEventListener("click", function () {
         const task = input.value.trim(); // Get the input value and remove whitespace
         if (task === "") return; // If the input is empty, do nothing
+        // Check if task already exists
+        const existingTasks = Array.from(list.children).map(
+          (li) => li.querySelector("span").innerText
+        );
+        if (existingTasks.includes(task)) {
+          alert("Task already exists! 🚨");
+          return;
+        }
         addTask(task); // Add the new task
         input.value = ""; // Clear the input field after adding the task
       });

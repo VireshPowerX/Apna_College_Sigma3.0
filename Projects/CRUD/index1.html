@@ -1,160 +1,163 @@
+<!-- To-Do List add/remove/no-duplicate task and save into localstorage -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do Task List</title>
-    <style>/* 💖 Our Love - Cute Pink Theme UI 💖 */
-
-        body {
-            background: linear-gradient(to bottom right, #FFC0CB, #FF69B4); /* Soft Pink Gradient */
-            color: #FF69B4; /* Dark Pink */
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            align-items: center;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            text-shadow: 0px 0px 10px #FF69B4;
-            transition: all 0.3s ease-in-out;
-        }
-        
-        h1:hover {
-            color: #ff1493;
-            text-shadow: 0px 0px 20px #ff1493;
-        }
-        
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        ul {
-            list-style: none;
-            padding: 0;
-            width: 80%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        ul li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            margin: 10px 0;
-            box-shadow: 0px 4px 15px rgba(255, 105, 180, 0.3);
-        }
-        
-        .todo-text {
-            flex-grow: 1; /* Ensures task text takes full space */
-            font-size: 1.2rem;
-            color: #FF69B4;
-            text-align: left;
-            margin-left: 10px;
-            word-break: break-word;
-        }
-        
-        button {
-            background-color: #FF69B4;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0px 4px 15px rgba(255, 105, 180, 0.5);
-            margin-left: auto; /* Pushes button fully to the right */
-        }
-        
-        button:hover {
-            background-color: #ff1493;
-            transform: scale(1.1);
-            box-shadow: 0px 6px 20px rgba(255, 20, 147, 0.7);
-        }
-        
-        .completed {
-            text-decoration: line-through;
-            color: lightcoral;
-            opacity: 0.6;
-        }
-        input {
-            padding: 5px;
-            margin-right: 10px;
-            font-size: 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-        }
+    <style>
+      /* 💖 Our Love - Cute Pink Theme UI 💖 */
+      body {
+        background: linear-gradient(
+          to bottom right,
+          #ffc0cb,
+          #ff69b4
+        ); /* Soft Pink Gradient */
+        color: #ff69b4; /* Dark Pink */
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+      h1 {
+        font-size: 3rem;
+        text-shadow: 0px 0px 10px #ff69b4;
+        transition: all 0.3s ease-in-out;
+      }
+      h1:hover {
+        color: #ff1493;
+        text-shadow: 0px 0px 20px #ff1493;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        width: 80%;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      ul li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        margin: 10px 0;
+        box-shadow: 0px 4px 15px rgba(255, 105, 180, 0.3);
+      }
+      .todo-text {
+        flex-grow: 1; /* Ensures task text takes full space */
+        font-size: 1.2rem;
+        color: #ff69b4;
+        text-align: left;
+        margin-left: 10px;
+        word-break: break-word;
+      }
+      button {
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 15px rgba(255, 105, 180, 0.5);
+        margin-left: auto; /* Pushes button fully to the right */
+      }
+      button:hover {
+        background-color: #ff1493;
+        transform: scale(1.1);
+        box-shadow: 0px 6px 20px rgba(255, 20, 147, 0.7);
+      }
+      .completed {
+        text-decoration: line-through;
+        color: lightcoral;
+        opacity: 0.6;
+      }
+      input {
+        padding: 5px;
+        margin-right: 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h3>To-Do Task List</h3>
     <div>
-        <input type="text" id="taskInput" placeholder="Add a new task">
-        <button id="taskAdd">Add Task</button>
+      <input type="text" id="taskInput" placeholder="Add a new task" />
+      <button id="taskAdd">Add Task</button>
     </div>
     <ul id="taskList"></ul>
     <script>
-// Select elements
-const taskInput = document.getElementById("taskInput");
-const addTaskButton = document.getElementById("taskAdd");
-const taskList = document.getElementById("taskList");
-// Load saved tasks from LocalStorage
-document.addEventListener("DOMContentLoaded", () => {
-    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    savedTasks.forEach(taskText => addTaskToDOM(taskText));
-});
-// Function to add task to DOM & LocalStorage
-function addTaskToDOM(taskText) {
-     // Prevent duplicate tasks
-     const existingTasks = Array.from(document.querySelectorAll("#taskList li span")).map(span => span.textContent);
-    if (existingTasks.includes(taskText)) {
-        alert("Task already exists!");
-        return;  // Stop adding duplicate task
-    }
-    const li = document.createElement("li");
-    const span = document.createElement("span");
-    span.textContent = taskText;
-    li.appendChild(span);
-    // Remove button
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    removeButton.style.marginLeft = "10px";
-    li.appendChild(removeButton);
-    // Toggle completion
-    span.addEventListener("click", () => {
-        span.classList.toggle("completed");
-        saveTasks();
-    });
-    // Remove task
-    removeButton.addEventListener("click", () => {
-        taskList.removeChild(li);
-        saveTasks();
-    });
-    taskList.appendChild(li);
-    saveTasks();
-};
-// Add task button click
-addTaskButton.addEventListener("click", () => {
-    const taskText = taskInput.value.trim();
-    if (taskText === "") return;
-    addTaskToDOM(taskText);
-    taskInput.value = "";
-});
-// Save tasks to LocalStorage
-function saveTasks() {
-    const tasks = Array.from(document.querySelectorAll("#taskList li span")).map(span => span.textContent);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-};
-    </script>
-</body>
+        // Select elements
+        const taskInput = document.getElementById("taskInput");
+        const addTaskButton = document.getElementById("taskAdd");
+        const taskList = document.getElementById("taskList");
+        // Load saved tasks from LocalStorage
+        document.addEventListener("DOMContentLoaded", () => {
+          const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+          savedTasks.forEach(({ text, completed }) => addTaskToDOM(text, completed));
+        });
+        // Function to add task to DOM & LocalStorage
+        function addTaskToDOM(taskText, completed = false) {
+          // Prevent duplicate tasks
+          const existingTasks = Array.from(document.querySelectorAll("#taskList li span"))
+            .map((span) => span.textContent);
+          if (existingTasks.includes(taskText)) {
+            alert("Task already exists!");
+            return; // Stop adding duplicate task
+          }
+          const li = document.createElement("li");
+          const span = document.createElement("span");
+          span.textContent = taskText;
+          if (completed) {
+            span.classList.add("completed"); // Restore completed state
+          }
+          li.appendChild(span);
+          // Remove button
+          const removeButton = document.createElement("button");
+          removeButton.textContent = "Remove";
+          removeButton.style.marginLeft = "10px";
+          li.appendChild(removeButton);
+          // Toggle completion
+          span.addEventListener("click", () => {
+            span.classList.toggle("completed");
+            saveTasks();
+          });
+          // Remove task
+          removeButton.addEventListener("click", () => {
+            taskList.removeChild(li);
+            saveTasks();
+          });
+          taskList.appendChild(li);
+          saveTasks();
+        }
+        // Add task button click
+        addTaskButton.addEventListener("click", () => {
+          const taskText = taskInput.value.trim();
+          if (taskText === "") return;
+          addTaskToDOM(taskText);
+          taskInput.value = "";
+        });
+        // Save tasks to LocalStorage (including completed state)
+        function saveTasks() {
+          const tasks = Array.from(document.querySelectorAll("#taskList li span")).map((span) => ({
+            text: span.textContent,
+            completed: span.classList.contains("completed"),
+          }));
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+      </script>      
+  </body>
 </html>
