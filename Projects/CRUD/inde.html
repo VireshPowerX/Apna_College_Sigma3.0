@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <style>
+        body {
+            font-family: cursive;
+        }
+        h3 {
+            text-align: center;
+            font-size: 24px;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+        }
+        #input {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            font-family: cursive;
+        }
+        #btn {
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #10e279;
+            cursor: pointer;
+            font-family: cursive;
+        }
+        #btn:hover {
+            background-color: #25be6f;
+        }
+        ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        li {
+            display: flex;
+            justify-content:space-between;
+        }
+        span {
+            cursor: pointer;
+        }
+        btn2 {
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid black;
+            background-color: #f44336;
+            cursor: pointer;
+            font-family: cursive;
+        }
+        btn2:hover {
+            background-color: #e53935;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: #666;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <h3>To-Do List</h3>
+    <div>
+        <input type="text" id="input" placeholder="Enter task">
+        <button id="btn">Add Task</button>
+    </div>
+    <ul id="list"></ul>
+    <script>
+        const input = document.getElementById("input");
+        const btn = document.getElementById("btn");
+        const list = document.getElementById("list");
+        btn.addEventListener("click", function() {
+            const task = input.value.trim();
+            if(task === "") return;
+            const li = document.createElement("li");
+            const span = document.createElement("span");
+            const btn2 = document.createElement("btn2");
+            btn2.innerText = "Remove Task";
+            span.innerText = task;
+            li.appendChild(span);
+            li.appendChild(btn2);
+            list.appendChild(li);
+            input.value = "";
+            btn2.addEventListener("click", function() {
+                list.removeChild(li);
+            });
+            span.addEventListener("click", function() {
+                span.classList.toggle("completed");
+            });
+        });
+    </script>
+</body>
+</html>
