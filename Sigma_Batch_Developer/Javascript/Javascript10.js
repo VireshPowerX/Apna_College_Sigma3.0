@@ -14,3 +14,36 @@ document.getElementById("parent").addEventListener("click", function (event) {
         console.log("Button clicked:", event.target.textContent);
     }
 });
+// Advance js
+// Async functions Call Stack
+// LIFO Last In First Out
+function hello() {};
+// Call stack first demo work last hello work
+function demo() {hello()} demo();
+// Breakpoints
+// inspect sources .js select number and reload 
+// syncronize means line wise work document function
+// asyncronize means some work after document happens like settimeout
+// JS is Single Threaded language
+// its means syncronize but how its work asyncronize bcz browser is multi Threaded
+// Callback Hell meaans sometime i need database first then after api Call
+// but if data not found or long time take then never callback complete
+// for solving this promises, asyncronize, await we use
+// promises is object in resolve & reject
+function savetoDb(data) {
+  return new Promise((resolve, reject) => {
+    let internetSpeed = Math.floor(Math.random()*10)+1;
+    if (internetSpeed > 4) {
+      resolve("success : data was saved");
+    } else  {
+      reject("error : data couldn't be saved");
+    }
+  });
+};
+// promises then() & catch()
+savetoDb("AI")
+.then(() => {
+  console.log("promise was resolved");
+}) .catch(() => {
+  console.log("promise was rejected");
+});
