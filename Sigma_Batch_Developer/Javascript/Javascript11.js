@@ -54,4 +54,21 @@ async function demo() {
     let a = 5;
     console.log("new number : ", a + 3);
 };
-// API webapi & api json format
+// API Application Programming Interface its two types webapi & api both are json or xml format
+// JSON JavaScript Object Notation 
+// JSON.parse() Method To parse a string object into a JS Object
+ let jsonStr = '{"name":"John","age":30}';
+ let obj = JSON.parse(jsonStr);
+ console.log(obj); // Output: {name: "John", age: 30}
+ // JSON.stringify() Method To convert an object into a JSON string
+ let person = {name: "John", age: 30};
+ let jsonStr1 = JSON.stringify(person);
+ console.log(jsonStr); // Output: '{"name":"John","age":30}'
+ // Testing API Tools Hoppscotch & Postman
+ // Hoppscotch we using search on browser hoppscotch.io
+ // Ajax Asynchronous JavaScript and XML
+ // Ajaj Asynchronous JavaScript and JSON
+ // Http Verbs means GET POST DELETE
+ // Status Code are 200 - OK 404 - Not Found 400 - Bad Request 500 - Internet Server Down status codes total 100-599
+ // Query Strings https://google.com/search?q=apple+world&marks=100 link ? query parameter & query parameter
+ // Http Headers 
