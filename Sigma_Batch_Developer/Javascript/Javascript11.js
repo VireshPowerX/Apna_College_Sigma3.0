@@ -71,4 +71,41 @@ async function demo() {
  // Http Verbs means GET POST DELETE
  // Status Code are 200 - OK 404 - Not Found 400 - Bad Request 500 - Internet Server Down status codes total 100-599
  // Query Strings https://google.com/search?q=apple+world&marks=100 link ? query parameter & query parameter
- // Http Headers 
+ // Http Headers header, value Inspect Network Headers
+ // Hoppscotch Headers header value so the value we change it header also POST GET
+ // Fetch is promise 
+ let url = "https://catfact.ninja/fact";
+ fetch(url)
+ .then((res) => {
+    console.log(res);
+    return res.json();
+    })
+    .then((data) => {
+    console.log("data1 = ", data.fact);
+    return fetch(url);
+    })
+    .then((res) => {
+    console.log(res);
+    return res.json();
+    })
+    .then((data2) => {
+    console.log("data2 = ", data2.fact);
+    })
+ .catch((err) => {
+    console.log("ERROR - ", err);
+ });
+ console.log("Hello AI");
+ // Using Fetch with async-await
+ async function getFacts() {
+    try {
+        let res = await fetch(url);
+        let data = await res.json();
+        console.log(data.fact);
+        let res1 = await fetch(url);
+        let data1 = await res1.json();
+        console.log(data1.fact);
+    } catch (err) {
+        console.log("ERROR - ", err);
+    }
+    console.log("Hello AI");
+ }
