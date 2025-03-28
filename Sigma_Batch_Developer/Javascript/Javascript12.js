@@ -66,3 +66,17 @@ btn4.addEventListener("click", async () => {
     p.innerText = joke1.data.joke;
 });
 // Axios Query Strings
+let url4 = "http://universities.hipolabs.com/search?name=";
+let btn5 = document.querySelector("#btn5");
+ btn5.addEventListener("click", async () => {
+    let input = document.querySelector("#stateInput").value;
+    let res = await axios.get(`${url4}${input}`);
+    console.log(res.data);
+    let ul = document.querySelector("#stateCol");
+    ul.innerHTML = "";
+    res.data.forEach(input => {
+        let li = document.createElement("li");
+        li.innerText = input.name;
+        ul.appendChild(li);
+    });
+});
