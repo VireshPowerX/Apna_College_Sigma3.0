@@ -66,17 +66,25 @@ btn4.addEventListener("click", async () => {
     p.innerText = joke1.data.joke;
 });
 // Axios Query Strings
-let url4 = "http://universities.hipolabs.com/search?name=";
+let url4 = "http://universities.hipolabs.com/search?country=India"; // Filter by India
 let btn5 = document.querySelector("#btn5");
- btn5.addEventListener("click", async () => {
-    let input = document.querySelector("#stateInput").value;
-    let res = await axios.get(`${url4}${input}`);
-    console.log(res.data);
+btn5.addEventListener("click", async () => {
+    let input = document.querySelector("#stateInput").value.trim().toLowerCase(); // Get user input
+    let res = await axios.get(url4);
     let ul = document.querySelector("#stateCol");
     ul.innerHTML = "";
-    res.data.forEach(input => {
+    let universities = res.data.filter(university => 
+        university["state-province"] && university["state-province"].trim().toLowerCase() === input
+    );
+    if (universities.length > 0) {
+        universities.forEach(university => {
+            let li = document.createElement("li");
+            li.innerText = university.name;
+            ul.appendChild(li);
+        });
+    } else {
         let li = document.createElement("li");
-        li.innerText = input.name;
+        li.innerText = "No universities found for this state.";
         ul.appendChild(li);
-    });
+    }
 });
