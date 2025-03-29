@@ -1,0 +1,38 @@
+1. Different Terms :- 
+Command Line - any interface that is used by entering textual commands (gen. Windows centric)
+Terminal - This is a type of command line (gen. Mac centric)
+Console - A command-line interface used to work with your computer
+Shell - A program running on Terminal
+Bash - A popular shell on Mac OS / Linux
+Z-Shell - Another shell (default)
+2. For window user git bash install :-
+https://git-scm/downloads
+GitBash 
+main 3rd option
+3. Commands :-
+ls = list files (show my files)
+pwd = print working directory (where am i?)
+clear = clear screen
+cd = change directory (cd Desktop, cd ..)
+cd Desktop/Newfolder (root directory inside)
+cd ../.. (back/back)
+cd / (root directory) 
+cd ~ (home directory) fullpath
+mkdir = make directory
+mkdir Hello
+mkdir Hello Hi
+mkdir Dekstop/Hello
+mkdir fullpath/Hello
+man ls = give info about ls command
+man mkdir = give info about mkdir command
+touch = create files
+touch index.html
+touch index.html index2.html
+touch Hello/index.html
+touch fullpath/index.html
+rm = remove files permanent delete
+rm index.html index2.html
+rmdir = removes empty folders permanent delete
+rmdir Hello Hi
+rm -rf = removes any folders permanent delete
+rm -rf Hello Hi
