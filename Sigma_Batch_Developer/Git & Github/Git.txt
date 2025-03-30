@@ -1,0 +1,13 @@
+git --version
+git
+git config --list
+q
+git config --global user.name "######## #######"
+git config --global user.email "########@#######.###"
+git clone link(HTML)
+ls -a
+git status
+git add filename(index.html)
+git add .(everything)
+git commit -m "somemessage"
+git push origin main
