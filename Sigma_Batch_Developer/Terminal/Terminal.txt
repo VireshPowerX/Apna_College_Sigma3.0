@@ -1,4 +1,4 @@
-1. Different Terms :- 
+1. Different Terms called also :- 
 Command Line - any interface that is used by entering textual commands (gen. Windows centric)
 Terminal - This is a type of command line (gen. Mac centric)
 Console - A command-line interface used to work with your computer
@@ -7,8 +7,8 @@ Bash - A popular shell on Mac OS / Linux
 Z-Shell - Another shell (default)
 2. For window user git bash install :-
 https://git-scm/downloads
-GitBash 
-main 3rd option
+GitBash follow this setup options other all same
+override main, 3rd option
 3. Commands :-
 ls = list files (show my files)
 pwd = print working directory (where am i?)
@@ -17,22 +17,23 @@ cd = change directory (cd Desktop, cd ..)
 cd Desktop/Newfolder (root directory inside)
 cd ../.. (back/back)
 cd / (root directory) 
-cd ~ (home directory) fullpath
+cd ~ (home directory fullpath)
 mkdir = make directory
-mkdir Hello
-mkdir Hello Hi
-mkdir Dekstop/Hello
-mkdir fullpath/Hello
+mkdir Hello (create folder)
+mkdir Hello Hi (create many folders)
+mkdir Desktop/Hello (create folder on path)
+mkdir fullpath/Hello (create folder fullpath)
 man ls = give info about ls command
 man mkdir = give info about mkdir command
-touch = create files
-touch index.html
-touch index.html index2.html
-touch Hello/index.html
-touch fullpath/index.html
-rm = remove files permanent delete
-rm index.html index2.html
+touch index.html (create file)
+touch index.html index2.html (create multiple files)
+touch Hello/index.html (create file on path)
+touch fullpath/index.html (create file fullpath)
+rm = remove files permanent delete 
+rm index.html index2.html (delete multiple permanent files)
 rmdir = removes empty folders permanent delete
-rmdir Hello Hi
+rmdir Hello Hi (delete multiple permanent folders)
 rm -rf = removes any folders permanent delete
-rm -rf Hello Hi
+rm -rf Hello Hi (delete folders & files permanent)
+q = quit
+spacebar = more info
