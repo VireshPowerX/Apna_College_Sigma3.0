@@ -38,27 +38,27 @@ div {
 }
 
 /* ID & Class Selectors */
-#myid { /* ID selector */ }
-.myclass { /* Class selector */ }
-.myclass.myclass2 { /* Multiple class selector */ }
+#myid { /* ID selector */ color:#000;}
+.myclass { /* Class selector */ color:#000;}
+.myclass.myclass2 { /* Multiple class selector */ color:#000;}
 
 /* CSS Selectors */
-p > span { /* Child selector: selects direct child of <p> */ }
-p span { /* Descendant selector: selects any <span> inside <p> */ }
-p + span { /* Adjacent sibling: selects next <span> after <p> */ }
-p ~ span { /* General sibling: selects all <span> after <p> */ }
-input[type="text"] { /* Attribute selector */ }
+p > span { /* Child selector: selects direct child of <p> */ color:#000;}
+p span { /* Descendant selector: selects any <span> inside <p> */ color:#000;}
+p + span { /* Adjacent sibling: selects next <span> after <p> */ color:#000;}
+p ~ span { /* General sibling: selects all <span> after <p> */ color:#000;}
+input[type="text"] { /* Attribute selector */ color:#000;}
 
 /* Pseudo-classes */
-h1:hover { /* When mouse hovers over h1 */ }
-h1:nth-of-type(2) { /* Targets every 2nd <h1> */ }
-h1:active { /* When an <h1> is clicked */ }
-h1:checked { /* When a checkbox or radio is selected */ }
+h1:hover { /* When mouse hovers over h1 */ color:#000;}
+h1:nth-of-type(2) { /* Targets every 2nd <h1> */ color:#000;}
+h1:active { /* When an <h1> is clicked */ color:#000;}
+h1:checked { /* When a checkbox or radio is selected */ color:#000;}
 
 /* Pseudo-elements */
-h1::first-letter { /* First letter of h1 */ }
-h1::first-line { /* First line of h1 */ }
-h1::selection { /* Text selection styling */ }
+h1::first-letter { /* First letter of h1 */ color:#000;}
+h1::first-line { /* First line of h1 */ color:#000;}
+h1::selection { /* Text selection styling */ color:#000;}
 
 /* Box Model */
 p {  
