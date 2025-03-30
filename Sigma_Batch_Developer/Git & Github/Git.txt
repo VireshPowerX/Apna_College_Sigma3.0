@@ -1,13 +1,36 @@
-git --version
-git
-git config --list
-q
-git config --global user.name "######## #######"
-git config --global user.email "########@#######.###"
-git clone link(HTML)
-ls -a
-git status
-git add filename(index.html)
-git add .(everything)
-git commit -m "somemessage"
-git push origin main
+git --version [git version check]
+git [for all commands list]
+git config --list [show status profile]
+q [quit]
+git config --global user.name "######## #######" [set username globally all devices same username]
+git config --global user.email "########@#######.###" [set email globally all devices same email]
+git clone link(HTML) [clone own repo]
+ls -a [check hidden folders and files .git means our folder are local or commit in git also]
+git status [our files are modified, stagging, commit, any changes]
+git add filename(index.html) [add file into git]
+git add .(everything) [add everything into git]
+git commit -m "somemessage" [what changes any file did put commit]
+git push origin main [final stage]
+git init [create a new repo]
+git remote add origin link(HTML) [our folder set new repo]
+git remote -v [check repo path]
+git branch [check branch]
+git branch -M main [change branch master into main]
+git push origin main [final stage]
+git commit -am "message" [only one file add changes and commit message]
+git push -u origin main [set one time its shortcut to push files final stage]
+git push [21 line follow first then after you can use this shortcut to push files]
+git checkout -b branchname(bugfix,feature) [create new branch]
+git checkout branchname [set branch]
+git checkout -d branchname [delete branch]
+git push --set -upstream origin branchname [different branch final stage push]
+git diff main [see changes branches]
+git merge main [branches to merge main]
+git pull origin main [final stage push]
+git reset filename [current changes delete only one file]
+git reset [current all changes delete]
+git reset HEAD~1 [last changes delete commit]
+git log [check list commits every commit have hashcode]
+git reset hashcode [current changes delete to replace into last commit hashcode]
+git reset --hard hashcode [current changes forcely to everyone]
+Folk option is use for add repo to our git profile do changes and pull request send
