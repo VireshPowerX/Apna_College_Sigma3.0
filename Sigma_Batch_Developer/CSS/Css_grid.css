@@ -1,49 +1,74 @@
 .container {
-    display: grid; /* Defines a grid container, making its children grid items */
-    
+    display: grid;
+    /* Defines a grid container, making its children grid items */
+
     /* Defining grid structure */
-    grid-template-columns: repeat(3, 100px); /* Creates 3 equal columns of 100px each */
-    grid-template-rows: repeat(3, 100px); /* Creates 3 equal rows of 100px each */
-    
+    grid-template-columns: repeat(3, 100px);
+    /* Creates 3 equal columns of 100px each */
+    grid-template-rows: repeat(3, 100px);
+    /* Creates 3 equal rows of 100px each */
+
     /* Alternative method: Using fractional units for equal spacing */
-    grid-template-columns: 1fr 1fr 1fr; /* Distributes columns equally */
-    grid-template-rows: 1fr 1fr 1fr; /* Distributes rows equally */
-    
+    grid-template-columns: 1fr 1fr 1fr;
+    /* Distributes columns equally */
+    grid-template-rows: 1fr 1fr 1fr;
+    /* Distributes rows equally */
+
     /* Spacing between grid items */
-    grid-row-gap: 10px; /* Defines gap between rows */
-    grid-column-gap: 10px; /* Defines gap between columns */
-    grid-gap: 10px 20px; /* Shortcut: 10px row gap & 20px column gap */
+    grid-row-gap: 10px;
+    /* Defines gap between rows */
+    grid-column-gap: 10px;
+    /* Defines gap between columns */
+    grid-gap: 10px 20px;
+    /* Shortcut: 10px row gap & 20px column gap */
 
     /* Grid item positioning */
-    grid-column-start: 1; /* Starts at column 1 */
-    grid-column-end: 3; /* Ends at column 3 */
-    grid-column: 1 / 4; /* Shortcut: Starts at column 1, spans till column 4 */
-    grid-column: 1 / span 2; /* Starts at column 1, spans 2 columns */
+    grid-column-start: 1;
+    /* Starts at column 1 */
+    grid-column-end: 3;
+    /* Ends at column 3 */
+    grid-column: 1 / 4;
+    /* Shortcut: Starts at column 1, spans till column 4 */
+    grid-column: 1 / span 2;
+    /* Starts at column 1, spans 2 columns */
 
-    grid-row-start: 1; /* Starts at row 1 */
-    grid-row-end: 3; /* Ends at row 3 */
-    grid-row: 1 / 4; /* Shortcut: Starts at row 1, spans till row 4 */
-    grid-row: 1 / span 2; /* Starts at row 1, spans 2 rows */
+    grid-row-start: 1;
+    /* Starts at row 1 */
+    grid-row-end: 3;
+    /* Ends at row 3 */
+    grid-row: 1 / 4;
+    /* Shortcut: Starts at row 1, spans till row 4 */
+    grid-row: 1 / span 2;
+    /* Starts at row 1, spans 2 rows */
 
     /* Alignment inside grid container */
     /* justify-items (horizontal alignment of all items), align-items (vertical alignment of all items) */
     /* place-items: combines both justify-items and align-items */
 
-    display: inline-grid; /* Makes grid behave as an inline element */
-    
+    display: inline-grid;
+    /* Makes grid behave as an inline element */
+
     /* Layering priority */
-    z-index: 1; /* Ensures this element appears above lower z-index elements */
+    z-index: 1;
+    /* Ensures this element appears above lower z-index elements */
 }
 
 .item {
     /* Animation properties */
-    animation-name: identifier; /* Assigns animation */
-    animation-duration: 4s; /* Runs for 4 seconds */
-    animation-timing-function: ease-in-out; /* Smooth transition effect */
-    animation-delay: 2s; /* Starts after 2 seconds */
-    animation-iteration-count: infinite; /* Runs infinitely */
-    animation-direction: alternate; /* Alternates between normal & reverse */
-    animation-fill-mode: forwards; /* Retains final state after animation ends */
+    animation-name: identifier;
+    /* Assigns animation */
+    animation-duration: 4s;
+    /* Runs for 4 seconds */
+    animation-timing-function: ease-in-out;
+    /* Smooth transition effect */
+    animation-delay: 2s;
+    /* Starts after 2 seconds */
+    animation-iteration-count: infinite;
+    /* Runs infinitely */
+    animation-direction: alternate;
+    /* Alternates between normal & reverse */
+    animation-fill-mode: forwards;
+    /* Retains final state after animation ends */
 
     /* Shorthand animation property */
     animation: identifier 4s ease-in-out 2s infinite alternate forwards;
@@ -52,29 +77,58 @@
 /* Keyframes define animation steps */
 @keyframes identifier {
     0% {
-        background-color: red; /* Starts with red */
+        background-color: red;
+        /* Starts with red */
     }
+
     50% {
-        background-color: yellow; /* Midway changes to yellow */
+        background-color: yellow;
+        /* Midway changes to yellow */
     }
+
     100% {
-        background-color: green; /* Ends with green */
+        background-color: green;
+        /* Ends with green */
     }
 }
 
 /* Media Queries - Responsive Design */
-@media screen and (max-width: 600px) { /* Applies when screen width is 600px or less */
-    h1 { background-color: red; } /* Mobile: Red background */
+@media screen and (max-width: 600px) {
+
+    /* Applies when screen width is 600px or less */
+    h1 {
+        background-color: red;
+    }
+
+    /* Mobile: Red background */
 }
 
-@media screen and (min-width: 601px) and (max-width: 1024px) { /* Applies for tablets */
-    h1 { background-color: yellow; } /* Tablet: Yellow background */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+    /* Applies for tablets */
+    h1 {
+        background-color: yellow;
+    }
+
+    /* Tablet: Yellow background */
 }
 
-@media screen and (min-width: 1025px) { /* Applies for desktops */
-    h1 { background-color: green; } /* Desktop: Green background */
+@media screen and (min-width: 1025px) {
+
+    /* Applies for desktops */
+    h1 {
+        background-color: green;
+    }
+
+    /* Desktop: Green background */
 }
 
-@media (orientation: landscape) { /* Applies when screen is in landscape mode */
-    h1 { background-color: blue; } /* Landscape: Blue background */
+@media (orientation: landscape) {
+
+    /* Applies when screen is in landscape mode */
+    h1 {
+        background-color: blue;
+    }
+
+    /* Landscape: Blue background */
 }
