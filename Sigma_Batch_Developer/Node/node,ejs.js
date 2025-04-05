@@ -112,8 +112,8 @@ for (btn of btns) {
 // EJSdir > node_modules, public, views, data.json index.js package-lock.json package.json
 // public > [css > style.css, js > app.js]
 // views > includes error.ejs home.ejs instagram.ejs github.ejs rolldice.ejs
-// github.ejs its <!DOCTYPE to </head> cut
 // views > includes > head.ejs footer.ejs
+// github.ejs its <!DOCTYPE to </head> cut
 // paste head.ejs </html>
 // footer.ejs
 <div style="background-color: lightblue">Contact us at : hello@abc <bt /> Phone no. - +91 xxxxxxxxxx</div>
