@@ -1,0 +1,10 @@
+npm install to install all packages
+REST Representation State Transfer
+CRUD Create Read Update Delete 
+Restful APIs
+GET POST PUT PATCH DELETE
+npm init -y
+npm i express
+npm i ejs
+type nul > index.js
+nodemon index.js
