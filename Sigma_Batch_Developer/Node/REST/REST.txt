@@ -8,3 +8,5 @@ npm i express
 npm i ejs
 type nul > index.js
 nodemon index.js
+npm install uuid
+npm install method-override
