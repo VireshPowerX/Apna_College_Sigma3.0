@@ -1,36 +1,61 @@
-git --version [git version check]
-git [for all commands list]
-git config --list [show status profile]
-q [quit]
-git config --global user.name "######## #######" [set username globally all devices same username]
-git config --global user.email "########@#######.###" [set email globally all devices same email]
-git clone link(HTML) [clone own repo]
-ls -a [check hidden folders and files .git means our folder are local or commit in git also]
-git status [our files are modified, stagging, commit, any changes]
-git add filename(index.html) [add file into git]
-git add .(everything) [add everything into git]
-git commit -m "somemessage" [what changes any file did put commit]
-git push origin main [final stage]
-git init [create a new repo]
-git remote add origin link(HTML) [our folder set new repo]
-git remote -v [check repo path]
-git branch [check branch]
-git branch -M main [change branch master into main]
-git push origin main [final stage]
-git commit -am "message" [only one file add changes and commit message]
-git push -u origin main [set one time its shortcut to push files final stage]
-git push [21 line follow first then after you can use this shortcut to push files]
-git checkout -b branchname(bugfix,feature) [create new branch]
-git checkout branchname [set branch]
-git checkout -d branchname [delete branch]
-git push --set -upstream origin branchname [different branch final stage push]
-git diff main [see changes branches]
-git merge main [branches to merge main]
-git pull origin main [final stage push]
-git reset filename [current changes delete only one file]
-git reset [current all changes delete]
-git reset HEAD~1 [last changes delete commit]
-git log [check list commits every commit have hashcode]
-git reset hashcode [current changes delete to replace into last commit hashcode]
-git reset --hard hashcode [current changes forcely to everyone]
-Folk option is use for add repo to our git profile do changes and pull request send
+git --version                      # Check installed Git version
+git                               # List all Git commands
+git config --list                 # Show all Git configurations
+q                                 # Quit (when inside a Git help screen)
+
+# 🔧 Set Global Git Configurations
+git config --global user.name "Your Name"             # Set your name globally
+git config --global user.email "your@email.com"       # Set your email globally
+
+# 📥 Clone Repository
+git clone <repo-link>            # Clone your repository to local system
+
+# 📂 Check Git Folder
+ls -a                            # Check hidden files; if .git is present, it’s a Git repo
+
+# 📊 Status & Staging
+git status                       # See modified, staged, or untracked files
+git add <filename>              # Stage a single file
+git add .                        # Stage all changes
+
+# ✅ Commit Changes
+git commit -m "Your message"    # Commit with a message
+git commit -am "Your message"   # Stage *and* commit modified files (skip 'add')
+
+# 🚀 Push to Remote Repository
+git push origin main             # Push to main branch
+git push -u origin main          # Set upstream & push (first time only)
+git push                         # Push changes (after upstream is set)
+
+# 🆕 Create or Initialize Repository
+git init                         # Create a new Git repo in current folder
+git remote add origin <repo-link>  # Connect local repo to remote
+git remote -v                    # Check remote repo link
+
+# 🌿 Branching
+git branch                       # List branches
+git branch -M main               # Rename 'master' to 'main'
+git checkout -b <branch-name>   # Create and switch to new branch
+git checkout <branch-name>      # Switch to a specific branch
+git branch -d <branch-name>     # Delete a branch
+
+# 🔀 Merge & Pull
+git merge main                   # Merge 'main' into current branch
+git pull origin main             # Pull changes from main
+
+# 🌊 Push Branch to Remote
+git push --set-upstream origin <branch-name>  # First-time push of new branch
+
+# 🔎 Diff & Logs
+git diff main                    # Show differences with 'main'
+git log                          # View commit history with hashes
+
+# 🔄 Reset
+git reset <filename>             # Unstage a file (undo `git add`)
+git reset                        # Unstage all files
+git reset HEAD~1                 # Undo last commit (keep changes)
+git reset <commit-hash>          # Reset to a specific commit
+git reset --hard <commit-hash>   # Forcefully reset to commit (lose changes)
+
+# 🧪 Forking (GitHub-specific)
+# "Fork" is used to copy someone else's repo into your GitHub profile to modify and submit a pull request.
