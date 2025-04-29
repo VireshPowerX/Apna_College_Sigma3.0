@@ -1,0 +1,91 @@
+
+==========================
+ TERMINAL COMMANDS CHEAT SHEET
+==========================
+
+────────────────────────────
+💻 Common Terminology
+────────────────────────────
+- Command Line: Any text-based interface to control your system.
+- Terminal: A type of command-line interface (macOS/Linux).
+- Console: General term for a CLI.
+- Shell: Program that processes commands (e.g., Bash, Zsh, PowerShell).
+- Bash: Popular shell used in macOS/Linux.
+- Zsh: Another default macOS shell.
+- PowerShell: Advanced Windows shell.
+- CMD: Classic command prompt in Windows.
+
+────────────────────────────
+🛠 For Windows Users: Git Bash Setup
+────────────────────────────
+Download Git Bash 👉 https://git-scm.com/downloads
+During setup:
+- Select "Override default editor" (3rd option)
+- Leave other settings as default
+
+────────────────────────────
+🐧 macOS / Linux (Bash / Zsh)
+────────────────────────────
+# Navigation
+ls                             - List files and folders
+pwd                            - Show current directory
+clear                          - Clear terminal screen
+cd folder                      - Change directory
+cd ..                          - Go up one level
+cd ../..                       - Go up two levels
+cd /                           - Go to root directory
+cd ~                           - Go to home directory
+
+# Folder & File Creation
+mkdir FolderName               - Create a folder
+mkdir One Two                  - Create multiple folders
+touch index.html               - Create a file
+touch a.html b.html            - Create multiple files
+
+# Delete Files/Folders
+rm file.txt                    - Delete a file
+rm file1 file2                 - Delete multiple files
+rmdir Folder                   - Delete empty folder
+rm -rf Folder                  - Force delete folder and its contents
+
+# Manual & Quit
+man ls                         - Show manual for 'ls'
+q                              - Quit manual
+(spacebar)                     - Scroll in manual
+
+────────────────────────────
+🪟 Windows (CMD - Command Prompt)
+────────────────────────────
+# Navigation
+dir                            - List files/folders
+cd folder                      - Change directory
+cd..                           - Go up one level
+cd\                           - Go to root directory
+cd /d D:\Path\To\Folder      - Change drive + folder
+cls                            - Clear screen
+
+# Folder & File Creation
+mkdir Hello                    - Create folder
+echo. > file.txt               - Create file
+type nul > file.txt            - Create empty file
+copy con file.txt              - Create file with content (Ctrl+Z to save)
+
+# Delete Files/Folders
+del file.txt                   - Delete a file
+rmdir FolderName               - Delete empty folder
+rmdir /s /q FolderName         - Force delete folder + contents
+
+# Help
+help                           - Show command list
+help dir                       - Help about a specific command
+
+────────────────────────────
+⚡ Windows PowerShell
+────────────────────────────
+Get-ChildItem                  - List files/folders (like ls)
+Set-Location folder            - Change directory (like cd)
+Clear-Host                     - Clear screen
+New-Item -Type File name.txt   - Create a file
+New-Item -Type Directory Name  - Create folder
+Remove-Item name.txt           - Delete file or folder
+exit                           - Exit terminal

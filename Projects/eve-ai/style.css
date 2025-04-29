@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .chat-container {
+    width: 400px;
+    background: #1e1e2f;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 0, 150, 0.3);
+  }
+  
+  .chat-header {
+    background: #ff007f;
+    padding: 16px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .chat-box {
+    height: 400px;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .input-area {
+    display: flex;
+    border-top: 1px solid #333;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #2c2c3e;
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 12px 20px;
+    background: #ff007f;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  
+  button:hover {
+    background: #e60073;
+  }
+  
+  .user-message {
+    text-align: right;
+    color: #a0e7ff;
+  }
+  
+  .eve-message {
+    text-align: left;
+    color: #ffa6e0;
+  }
+  
