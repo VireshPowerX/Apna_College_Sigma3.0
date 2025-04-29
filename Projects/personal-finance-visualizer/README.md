@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+Step 1 :- Install packages
+npm install and npm install -g npm@11.3.0
+Step 2 :- Install MongoDB 
+https://www.mongodb.com/try/download/community
+Step 3 :- Create Connection in MongoDB
+Edit file personal-finance-visualize -> .env.local(Create new file) and paste DATABASE_URL=DBconnectionLink
+Step 4 :- Create db collection data
+Install ThunderClient in vs code extension click new requests
+ThunderClient POST http://localhost:3000/api/categories Body JSON {"name":"cat"}
+Step 5 :- Run webpage
+npm run dev
