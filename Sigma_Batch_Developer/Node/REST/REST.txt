@@ -8,3 +8,8 @@ npm i express
 npm i ejs
 type nul > index.js
 nodemon index.js
+index.js data is main
+index.ejs is main data
+show.ejs is show particular data
+new.ejs is create new data 
+style.css is stylesheet
