@@ -1,3 +1,113 @@
+Task: Personal Finance Visualizer A simple web application for tracking personal finances.
+
+Common Requirements:
+Stack: Next.js, React, shadcn/ui, Recharts, MongoDB
+Responsive design with error states
+
+Stage 1: Basic Transaction Tracking
+- Add/Edit/Delete transactions (amount, date, -description)
+- Transaction list view
+- Single chart: Monthly expenses bar chart
+- Basic form validation
+
+Stage 2: Categories
+
+- All Stage 1 features +
+- Predefined categories for transactions
+- Category-wise pie chart
+- Dashboard with summary cards: total expenses, category breakdown, most recent transactions
+
+Stage 3: Budgeting
+
+- All Stage 2 features +
+- Set monthly category budgets
+- Budget vs actual comparison chart
+- Simple spending insights
+
+Evaluation:
+
+Feature Implementation: 40%
+Code Quality: 30%
+UI/UX Design: 30%
+
+Submission Process:
+
+- You can re-submit multiple times at different stages
+- Higher stages get priority in evaluation
+- Final selection based on evaluation criteria
+- Each submission requires:
+a. GitHub Repository
+b. Live Deployment URL
+c. Basic README
+
+Note: Do not implement authentication/login. Submissions with login/signup will not be evaluated.  
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Great plan! You can first build everything in JavaScript (.js), then later convert it into TypeScript (.tsx). Here’s the complete list of files you need for your Personal Finance Visualizer:
+📂 Project Folder Structure (JS Version)
+personal-finance-visualizer/
+│── .next/                 # Next.js Build Output (Auto-generated)
+│── node_modules/          # Dependencies
+│── public/                # Static Assets (favicons, images, etc.)
+│── src/                   # Source Code (Frontend & Backend API)
+│   ├── app/               # Next.js App Router (Pages & API routes)
+│   │   ├── layout.js      # Root Layout (Shared across all pages)
+│   │   ├── page.js        # Home/Dashboard Page
+│   │   ├── transactions/  # Transactions Route
+│   │   │   ├── page.js    # Transactions Page Component
+│   │   ├── categories/    # Categories Route
+│   │   │   ├── page.js    # Categories Page Component
+│   │   ├── budgeting/     # Budgeting Route
+│   │   │   ├── page.js    # Budgeting Page Component
+│   │   ├── api/           # Next.js API Routes (Serverless Backend)
+│   │   │   ├── transactions/
+│   │   │   │   ├── route.js  # API for transactions (CRUD)
+│   │   │   ├── categories/
+│   │   │   │   ├── route.js  # API for category management
+│   │   │   ├── budgeting/
+│   │   │   │   ├── route.js  # API for budgeting features
+│   ├── components/        # Reusable UI Components
+│   │   ├── TransactionForm.js
+│   │   ├── TransactionList.js
+│   │   ├── ExpenseChart.js
+│   │   ├── CategoryPieChart.js
+│   │   ├── BudgetComparisonChart.js
+│   │   ├── SummaryCards.js
+│   ├── lib/               # Utility Functions
+│   │   ├── fetchTransactions.js
+│   │   ├── formatCurrency.js
+│   ├── hooks/             # Custom Hooks
+│   │   ├── useTransactions.js
+│   ├── services/          # API Services (Client-side interactions)
+│   │   ├── transactionService.js
+│   ├── store/             # State Management (Context API or Zustand)
+│   │   ├── TransactionContext.js
+│   ├── styles/            # Global and Component Styles
+│   │   ├── global.css
+│   │   ├── theme.js
+│   ├── db/                # Database Connection
+│   │   ├── connect.js      # MongoDB Setup
+│   │   ├── models/        # MongoDB Schemas (Data Structure)
+│   │   │   ├── Transaction.js
+│   │   │   ├── Category.js
+│   │   │   ├── Budget.js
+│── middleware/            # Request Handling Middleware (Optional)
+│   │   ├── errorHandler.js
+│   │   ├── logger.js
+│── utils/                 # Helper Functions (Optional)
+│   │   ├── calculateBudgetProgress.js
+│   │   ├── formatDate.js
+│── .env.local             # Environment Variables (Local Development)
+│── next.config.js         # Next.js Configuration
+│── package.json           # Dependencies & Scripts
+│── README.md              # Project Overview & Setup Instructions
+
+
+🚀 Step-by-Step Approach
+1️⃣ Start with JavaScript: Build the app using .js files.
+2️⃣ Test & Debug: Ensure all functions work smoothly before switching to TypeScript.
+3️⃣ Convert to TypeScript: Rename .js files to .tsx and add type safety.
+Would you like help with the initial setup of the JavaScript version first? 🚀
+------------------------------------------------------------------------------------------------------------------------------------------------------
 Here's a breakdown of all the key files you’ll likely need for the Personal Finance Visualizer using Next.js, React, shadcn/ui, Recharts, and MongoDB.
 Project Folder Structure
 personal-finance-visualizer/
@@ -57,55 +167,3 @@ File Descriptions
 - Configuration Files: Next.js setup (next.config.js), TypeScript config (tsconfig.json)
 
 Would you like help structuring the database schema for transactions and categories?
---------------------------------------------------------------------------------------------------------------------------------------
-Great plan! You can first build everything in JavaScript (.js), then later convert it into TypeScript (.tsx). Here’s the complete list of files you need for your Personal Finance Visualizer:
-📂 Project Folder Structure (JS Version)
-personal-finance-visualizer/
-│── public/                        # Static assets (favicons, images, etc.)
-│── src/
-│   │── components/                 # UI Components
-│   │   ├── TransactionForm.js
-│   │   ├── TransactionList.js
-│   │   ├── ExpenseChart.js
-│   │   ├── CategoryPieChart.js
-│   │   ├── BudgetComparisonChart.js
-│   │   ├── SummaryCards.js
-│   │── pages/                      # Next.js Pages
-│   │   ├── index.js               # Home/Dashboard Page
-│   │   ├── transactions.js         # Transactions Page
-│   │   ├── categories.js           # Categories Page
-│   │   ├── budgeting.js            # Budgeting Page
-│   │── lib/                         # Utility Functions
-│   │   ├── fetchTransactions.js
-│   │   ├── formatCurrency.js
-│   │── hooks/                       # Custom Hooks
-│   │   ├── useTransactions.js
-│   │── services/                    # API Services
-│   │   ├── transactionService.js
-│   │── store/                       # State Management (if using Context API)
-│   │   ├── TransactionContext.js
-│   │── styles/                      # Global and Component Styles
-│   │   ├── global.css
-│   │   ├── theme.js
-│── backend/                         # Server-side code (API, Database models)
-│   │── models/
-│   │   ├── Transaction.js
-│   │   ├── Category.js
-│   │   ├── Budget.js
-│   │── routes/
-│   │   ├── transactionRoutes.js
-│   │   ├── categoryRoutes.js
-│   │   ├── budgetRoutes.js
-│   │── db/                          # MongoDB Connection
-│   │   ├── connect.js
-│── .env.local                       # Environment Variables (local development)
-│── next.config.js                    # Next.js Configuration
-│── package.json                      # Dependencies and scripts
-│── README.md                         # Project Overview & Setup Instructions
-
-
-🚀 Step-by-Step Approach
-1️⃣ Start with JavaScript: Build the app using .js files.
-2️⃣ Test & Debug: Ensure all functions work smoothly before switching to TypeScript.
-3️⃣ Convert to TypeScript: Rename .js files to .tsx and add type safety.
-Would you like help with the initial setup of the JavaScript version first? 🚀
