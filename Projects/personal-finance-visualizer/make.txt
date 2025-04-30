@@ -69,6 +69,8 @@ personal-finance-visualizer/
 │   │   ├── TransactionForm.js
 │   │   ├── TransactionList.js
 │   │   ├── ExpenseChart.js
+│   │   ├── Footer.jss
+│   │   ├── Navbar.js
 │   │   ├── CategoryPieChart.js
 │   │   ├── BudgetComparisonChart.js
 │   │   ├── SummaryCards.js
