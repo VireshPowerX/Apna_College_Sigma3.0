@@ -1,33 +1,44 @@
-/* Navbar Styles */
+/* Global styles for the entire app */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fa;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+}
+
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #007bff;
-    padding: 16px;
-    color: white;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 16px;
-  }
-  
-  .nav-links li {
-    display: inline;
-  }
-  
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-  }
-  
-  /* Footer Styles */
-  .footer {
-    text-align: center;
-    padding: 12px;
-    background: #f1f1f1;
-    color: #333;
-  }
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links li {
+  font-size: 1.2rem;
+}
+
+footer {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
