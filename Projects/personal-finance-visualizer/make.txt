@@ -81,6 +81,7 @@ personal-finance-visualizer/
 │── .env.local             # Environment Variables (Local Development)
 │── package.json           # Dependencies & Scripts
 │── README.md              # Project Overview & Setup Instructions
+│── server.js
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Great plan! You can first build everything in JavaScript (.js), then later convert it into TypeScript (.tsx). Here’s the complete list of files you need for your Personal Finance Visualizer:
 📂 Project Folder Structure (JS Version)
