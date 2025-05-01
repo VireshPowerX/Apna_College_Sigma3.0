@@ -41,6 +41,46 @@ b. Live Deployment URL
 c. Basic README
 
 Note: Do not implement authentication/login. Submissions with login/signup will not be evaluated.  
+📂 Project Folder Structure (JS Version)
+personal-finance-visualizer/
+│── .next/                 # Next.js Build Output (Auto-generated)
+│── node_modules/          # Dependencies
+│── public/                # Static Assets (favicons, images, etc.)
+│── src/                   # Source Code (Frontend & Backend API)
+│   ├── app/               # Next.js App Router (Pages & API routes)
+│   │   ├── layout.js      # Root Layout (Shared across all pages)
+│   │   ├── page.js        # Home/Dashboard Page
+│   │   ├── transactions/  # Transactions Route
+│   │   │   ├── page.js    # Transactions Page Component
+│   │   ├── categories/    # Categories Route
+│   │   │   ├── page.js    # Categories Page Component
+│   │   ├── budgeting/     # Budgeting Route
+│   │   │   ├── page.js    # Budgeting Page Component
+│   │   ├── api/           # Next.js API Routes (Serverless Backend)
+│   │   │   ├── transactions/
+│   │   │   │   ├── route.js  # API for transactions (CRUD)
+│   │   │   ├── categories/
+│   │   │   │   ├── route.js  # API for category management
+│   │   │   ├── budgeting/
+│   │   │   │   ├── route.js  # API for budgeting features
+│   ├── components/        # Reusable UI Components
+│   │   ├── TransactionForm.js
+│   │   ├── TransactionList.js
+│   │   ├── TransactionSearch.js
+│   │   ├── ExpenseChart.js
+│   │   ├── ExportTransactions.js
+│   │   ├── Footer.jss
+│   │   ├── Navbar.js
+│   │   ├── CategoryPieChart.js
+│   │   ├── BudgetForm.js
+│   │   ├── BudgetList.js
+│   ├── styles/            # Global and Component Styles
+│   │   ├── global.css
+│   ├── db/                # Database Connection
+│   │   ├── connect.js      # MongoDB Setup
+│── .env.local             # Environment Variables (Local Development)
+│── package.json           # Dependencies & Scripts
+│── README.md              # Project Overview & Setup Instructions
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Great plan! You can first build everything in JavaScript (.js), then later convert it into TypeScript (.tsx). Here’s the complete list of files you need for your Personal Finance Visualizer:
 📂 Project Folder Structure (JS Version)
