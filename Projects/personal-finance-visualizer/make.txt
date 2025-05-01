@@ -82,6 +82,41 @@ personal-finance-visualizer/
 │── package.json           # Dependencies & Scripts
 │── README.md              # Project Overview & Setup Instructions
 │── server.js
+Since we're implementing Stage 2: Categories, here are the key files you'll need to modify:
+Frontend (Next.js)
+📂 src/app/transactions/page.js
+- Modify the transaction form to include a category dropdown when adding/editing transactions.
+- Update the transaction list to display categories alongside descriptions.
+
+📂 src/components/TransactionForm.js
+- Add a category selection field (dropdown with predefined categories).
+- Ensure category selection is submitted when adding/editing transactions.
+
+📂 src/components/CategoryPieChart.js (New file)
+- Create a PieChart component using Recharts to visualize expense breakdown by category.
+
+📂 src/app/dashboard/page.js
+- Add summary cards for total expenses, category breakdown, and recent transactions.
+- Integrate the CategoryPieChart here.
+
+Backend (Next.js API & MongoDB)
+📂 src/db/connect.js
+- No major changes, but ensure the schema updates reflect correctly in MongoDB.
+
+📂 src/app/api/transactions/route.js
+- Modify the transaction POST and PUT methods to accept and store the category field.
+
+📂 src/app/api/categories/route.js (New file)
+- If you want category management in the backend (optional), create an API route for managing predefined categories.
+
+📂 src/app/api/dashboard/route.js (New file)
+- Implement an API to fetch total expenses, category breakdown, and recent transactions for the dashboard.
+
+Styles
+📂 src/styles/global.css
+- Adjust styling for the dashboard and summary cards.
+
+Once these changes are made, Stage 2 will be complete! 🚀 Let me know if you need specific code snippets or further guidance.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Great plan! You can first build everything in JavaScript (.js), then later convert it into TypeScript (.tsx). Here’s the complete list of files you need for your Personal Finance Visualizer:
 📂 Project Folder Structure (JS Version)
