@@ -1,5 +1,4 @@
 import clientPromise from "../../../db/connect";
-import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
 // GET Transactions

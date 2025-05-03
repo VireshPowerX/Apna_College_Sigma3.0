@@ -108,7 +108,7 @@ export default function TransactionsPage() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center", padding: "20px" }}>
       <h1>Transactions</h1>
       <p>Here you can view and manage your transactions.</p>
 
