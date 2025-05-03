@@ -60,7 +60,9 @@ personal-finance-visualizer/
 │   │   │   ├── page.js    # Budgeting Page Component
 │   │   ├── api/           # Next.js API Routes (Serverless Backend)
 │   │   │   ├── transactions/
-│   │   │   │   ├── route.js  # API for transactions (CRUD)
+│   │   │   │   ├── route.js  # API for transactions (GET POST)
+│   │   │   │   ├── [id]  # API for transactions
+│   │   │   │   │   ├── route.js  # API for transactions (PUT DELETE)
 │   │   │   ├── categories/
 │   │   │   │   ├── route.js  # API for category management
 │   │   │   ├── budgeting/
