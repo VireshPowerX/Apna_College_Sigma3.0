@@ -124,7 +124,7 @@ export default function HomePage() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
+    <div style={{ textAlign: "center", padding: "0.5em" }}>
       <h1>Personal Finance Tracker</h1>
 
       {error && <p style={{ color: "red" }}>{error}</p>} {/* Display errors */}
