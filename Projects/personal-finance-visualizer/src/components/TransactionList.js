@@ -23,19 +23,19 @@ const TransactionList = ({ transactions, onEditClick, onDeleteClick }) => {
           <tbody>
             {transactions.map((transaction) => (
               <tr key={transaction._id} style={{ borderBottom: "1px solid #ddd" }}>
-                <td style={{ padding: "10px", fontWeight: "bold" }}>
+                <td style={{ padding: "10px", fontWeight: "bold", textAlign: "left" }}>
                   ${transaction.amount ? transaction.amount.toFixed(2) : "N/A"}
                 </td>
-                <td style={{ padding: "10px", fontSize: "14px", color: "#555" }}>
+                <td style={{ padding: "10px", fontSize: "14px", color: "#555", textAlign: "left" }}>
                   {transaction.date ? new Date(transaction.date).toLocaleDateString() : "N/A"}
                 </td>
-                <td style={{ padding: "10px", fontSize: "14px" }}>
+                <td style={{ padding: "10px", fontSize: "14px", textAlign: "left" }}>
                   {transaction.description || "No description"}
                 </td>
-                <td style={{ padding: "10px", fontSize: "14px", fontStyle: "italic" }}>
+                <td style={{ padding: "10px", fontSize: "14px", fontStyle: "italic", textAlign: "left" }}>
                   {transaction.category || "Uncategorized"}
                 </td>
-                <td style={{ padding: "10px", display: "flex", gap: "10px" }}>
+                <td style={{ padding: "10px", display: "flex", gap: "10px", textAlign: "left" }}>
                   <button 
                     style={{ 
                       padding: "6px 12px", 
