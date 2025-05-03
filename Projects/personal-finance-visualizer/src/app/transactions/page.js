@@ -8,10 +8,18 @@ export default function TransactionsPage() {
   const [transactions, setTransactions] = useState([]);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // Added loading state
+
+  // Fetch transactions from API
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
 
   const fetchTransactions = async () => {
     try {
+      setLoading(true);
       const response = await fetch("/api/transactions");
+
       if (!response.ok) throw new Error("Failed to fetch transactions");
 
       const data = await response.json();
@@ -19,64 +27,83 @@ export default function TransactionsPage() {
     } catch (error) {
       console.error("🚨 Error fetching transactions:", error);
       setError("Failed to load transactions. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
-
+  // Add transaction
   const handleTransactionAdded = async (newTransaction) => {
     try {
+      setLoading(true);
       const response = await fetch("/api/transactions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTransaction),
       });
 
-      if (!response.ok) throw new Error("Failed to add transaction");
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Failed to add transaction");
 
-      fetchTransactions(); // Refresh transactions after adding
+      setTransactions((prev) => [...prev, data.transaction]); // Efficient state update
     } catch (error) {
       console.error("🚨 Error adding transaction:", error);
       setError("Failed to add transaction. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Delete transaction
   const handleTransactionDeleted = async (transactionId) => {
     try {
-      const response = await fetch(`/api/transactions/${transactionId}`, {
-        method: "DELETE",
+      setLoading(true);
+      const response = await fetch(`/api/transactions/${transactionId}`, { 
+        method: "DELETE" 
       });
 
-      if (!response.ok) throw new Error("Failed to delete transaction");
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Failed to delete transaction");
 
       setTransactions((prev) => prev.filter((transaction) => transaction._id !== transactionId));
     } catch (error) {
       console.error("🚨 Error deleting transaction:", error);
       setError("Failed to delete transaction. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Handle transaction edit selection
   const handleTransactionEdit = (transaction) => {
     setSelectedTransaction(transaction);
   };
 
+  // Update transaction
   const handleTransactionUpdated = async (updatedTransaction) => {
     try {
+      setLoading(true);
       const response = await fetch(`/api/transactions/${updatedTransaction._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedTransaction),
       });
 
-      if (!response.ok) throw new Error("Failed to update transaction");
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Failed to update transaction");
 
-      fetchTransactions(); // Refresh transactions after updating
+      setTransactions((prev) =>
+        prev.map((transaction) =>
+          transaction._id === updatedTransaction._id ? updatedTransaction : transaction
+        )
+      ); // Efficient state update
+
       setSelectedTransaction(null);
     } catch (error) {
       console.error("🚨 Error updating transaction:", error);
       setError("Failed to update transaction. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -86,6 +113,7 @@ export default function TransactionsPage() {
       <p>Here you can view and manage your transactions.</p>
 
       {error && <p style={{ color: "red" }}>{error}</p>} {/* Display errors */}
+      {loading && <p>Loading...</p>} {/* Display loading indicator */}
 
       {/* Transaction Form */}
       <TransactionForm
