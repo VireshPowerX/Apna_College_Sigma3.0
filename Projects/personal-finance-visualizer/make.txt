@@ -52,6 +52,8 @@ personal-finance-visualizer/
 │   │   ├── page.js        # Home/Dashboard Page
 │   │   ├── transactions/  # Transactions Route
 │   │   │   ├── page.js    # Transactions Page Component
+│   │   ├── dashboard/     # Dashboard Route
+│   │   │   ├── page.js    # Dashboard Page Component
 │   │   ├── categories/    # Categories Route
 │   │   │   ├── page.js    # Categories Page Component
 │   │   ├── budgeting/     # Budgeting Route
