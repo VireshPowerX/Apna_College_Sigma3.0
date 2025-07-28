@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "vscode.typescript-language-features",
+    "vscode.eslint"
+  ]
+}
