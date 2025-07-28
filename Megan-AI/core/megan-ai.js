@@ -4,7 +4,7 @@ const { Ollama } = require('ollama');
 class MeganAI {
   constructor() {
     this.ollama = new Ollama({ host: 'http://localhost:11434' });
-    this.activeModel = 'deepseek-coder:6.7b-instruct-q4_K_M';
+    this.activeModel = 'qwen2.5-coder:0.5b';
     this.outputChannel = null;
   }
 
