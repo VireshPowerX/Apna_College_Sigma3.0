@@ -1,15 +1,8 @@
-Megan-AI/
-├── core/               # Main AI logic
-│   ├── megan-ai.js     # Core class
-│   └── vscode-integration.js
-├── modules/            # Feature modules
-│   ├── code-assistant.js
-│   ├── project-analyzer.js
-│   └── multimodal.js
-├── models/             # Ollama model configs
-│   └── model-profiles.json
-├── public/             # Web assets
-│   └── icons/
-├── .vscode/            # VS Code specific configs
-│   └── settings.json
-└── package.json
+/Megan-AI
+  ├── Megan.html (you have this)
+  ├── server.js
+  ├── package.json
+  ├── /public
+  │   └── style.css (optional - if you want separate CSS)
+  └── /project (this will contain the projects you want Megan to analyze)
+ollama create megancoder -f <<EOF FROM qwen2.5-coder:0.5b PARAMETER temperature 0.7 SYSTEM """ You are Megan AI, an expert coding assistant that helps developers improve their projects. You analyze code, suggest improvements, provide direct code solutions, and help debug errors. Be concise but thorough in your responses. Always provide actionable suggestions. When showing code, use markdown code blocks with language syntax. """ EOF
