@@ -213,6 +213,50 @@
             height: 100%;
             transition: width 0.5s ease;
         }
+
+        /* Dropdown Styles */
+        .dropdown {
+            margin-bottom: 15px;
+        }
+
+        .dropdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: var(--light);
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-weight: bold;
+        }
+
+        .dropdown-header:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: var(--light);
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .dropdown-content.expanded {
+            max-height: 1000px;
+            padding: 15px;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -261,9 +305,14 @@
             </div>
             
             <div class="suggestions">
-                <h3>Suggested Improvements</h3>
-                <div id="suggestions-list">
-                    <!-- AI suggestions will appear here -->
+                <div class="dropdown">
+                    <div class="dropdown-header" id="suggestions-dropdown">
+                        <span>Suggested Improvements</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="dropdown-content" id="suggestions-list">
+                        <!-- AI suggestions will appear here -->
+                    </div>
                 </div>
             </div>
             
@@ -526,6 +575,15 @@
             element.style.width = `${score}%`;
             element.style.backgroundColor = score > 70 ? '#4CAF50' : score > 40 ? '#FFC107' : '#F44336';
         }
+        
+        // Toggle dropdown functionality
+        document.getElementById('suggestions-dropdown').addEventListener('click', function() {
+            const content = document.getElementById('suggestions-list');
+            const arrow = this.querySelector('.dropdown-arrow');
+            
+            content.classList.toggle('expanded');
+            arrow.classList.toggle('rotated');
+        });
         
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
