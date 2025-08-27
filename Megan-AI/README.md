@@ -13,9 +13,9 @@ How to run this project simple follow Steps :-
 12.) Just copy the link http://localhost:3000 or other port number like http://localhost:portnumber
 13.) Open any browser and paste it the Megan-AI is running on your device.
 14.) Megan-AI folder there is project folder just paste files or whole project.
-15.) Megan-AI is help you in your project and it's offline Megan-AI safe.
+15.) Megan-AI is help you in your project and it's offline Megan-AI safe and you chat with her.
 16.) Note :- On first time run all steps 1-14
 17.) Note :- Daily purpose run this project just open 2 terminals and browser.
 18.) On first terminal run command ollama run modelname.
 19.) and follow steps 10-13.
-20.) Enjoy!
+20.) Note :- the biggest the ollama model parameter file clever but take gpu lots. Enjoy!!!
