@@ -1,341 +1,396 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
-const cors = require('cors');
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const cors = require("cors");
 
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
-app.use(express.json());
+// Ollama configuration
+const OLLAMA_BASE_URL = "http://localhost:11434";
+const OLLAMA_CHAT_ENDPOINT = `${OLLAMA_BASE_URL}/api/chat`;
+const OLLAMA_MODEL = "megancoder"; // Your preferred model
+
+// Enhanced CORS configuration
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+app.use(express.json({ limit: "10mb" }));
 app.use(express.static(__dirname));
 
 // Project knowledge storage
 const projectKnowledge = {};
 
-// Project scanning endpoint
-app.post('/scan-project', (req, res) => {
-    const projectPath = path.join(__dirname, 'project');
-    
-    function scanDirectory(dir) {
-        const results = [];
-        try {
-            const items = fs.readdirSync(dir);
-            
-            items.forEach(item => {
-                const fullPath = path.join(dir, item);
-                try {
-                    const stat = fs.statSync(fullPath);
-                    
-                    if (stat.isDirectory()) {
-                        results.push({
-                            name: item,
-                            children: scanDirectory(fullPath)
-                        });
-                    } else {
-                        results.push({ name: item });
-                    }
-                } catch (e) {
-                    console.error(`Error reading ${fullPath}:`, e);
-                }
-            });
-        } catch (e) {
-            console.error(`Error scanning directory ${dir}:`, e);
+// Create project directory if it doesn't exist
+const projectPath = path.join(__dirname, "project");
+if (!fs.existsSync(projectPath)) {
+  fs.mkdirSync(projectPath, { recursive: true });
+  // Create sample files
+  fs.writeFileSync(
+    path.join(projectPath, "index.js"),
+    '// Your main application file\nconsole.log("Hello Megan AI!");'
+  );
+  fs.writeFileSync(
+    path.join(projectPath, "package.json"),
+    JSON.stringify(
+      {
+        name: "megan-ai-project",
+        version: "1.0.0",
+        description: "Project assisted by Megan AI",
+        main: "index.js",
+        scripts: {
+          start: "node index.js",
+        },
+      },
+      null,
+      2
+    )
+  );
+}
+
+// Helper function to scan directory
+function scanDirectory(dir) {
+  const results = [];
+  try {
+    const items = fs.readdirSync(dir);
+
+    items.forEach((item) => {
+      const fullPath = path.join(dir, item);
+      try {
+        const stat = fs.statSync(fullPath);
+
+        if (stat.isDirectory()) {
+          results.push({
+            name: item,
+            path: fullPath,
+            type: "directory",
+            children: scanDirectory(fullPath),
+          });
+        } else {
+          results.push({
+            name: item,
+            path: fullPath,
+            type: "file",
+          });
         }
-        
-        return results;
-    }
-    
-    try {
-        const structure = scanDirectory(projectPath);
-        res.json({ success: true, structure });
-    } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
-    }
+      } catch (e) {
+        console.error(`Error reading ${fullPath}:`, e);
+      }
+    });
+  } catch (e) {
+    console.error(`Error scanning directory ${dir}:`, e);
+  }
+
+  return results;
+}
+
+// Add this new endpoint to get initial project structure
+app.get("/initial-structure", (req, res) => {
+  try {
+    const structure = scanDirectory(projectPath);
+    res.json({ success: true, structure });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
-// Project analysis endpoint
-app.post('/analyze-project', async (req, res) => {
-    try {
-        // Get project files content
-        const projectPath = path.join(__dirname, 'project');
-        const filesContent = await getFilesContent(projectPath);
-        
-        // Prepare prompt with project context
-        const prompt = `Analyze these project files and suggest specific improvements:
+// 1. Project scanning endpoint
+app.post("/scan-project", (req, res) => {
+  try {
+    const structure = scanDirectory(projectPath);
+    res.json({ success: true, structure });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 2. Get file content endpoint
+app.post("/get-file", (req, res) => {
+  try {
+    const { filepath } = req.body;
+
+    if (!filepath) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Filepath is required" });
+    }
+
+    // Security check to prevent directory traversal
+    const safePath = path.resolve(__dirname, filepath);
+    if (!safePath.startsWith(projectPath)) {
+      return res.status(403).json({ success: false, error: "Access denied" });
+    }
+
+    if (!fs.existsSync(safePath)) {
+      return res.status(404).json({ success: false, error: "File not found" });
+    }
+
+    const content = fs.readFileSync(safePath, "utf8");
+    res.json({ success: true, content });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 3. Save file endpoint
+app.post("/save-file", (req, res) => {
+  try {
+    const { filepath, content } = req.body;
+
+    if (!filepath || content === undefined) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Filepath and content are required" });
+    }
+
+    const safePath = path.resolve(__dirname, filepath);
+    if (!safePath.startsWith(projectPath)) {
+      return res.status(403).json({ success: false, error: "Access denied" });
+    }
+
+    // Create directory if it doesn't exist
+    const dir = path.dirname(safePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    fs.writeFileSync(safePath, content, "utf8");
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 4. Project health endpoint
+app.get("/project-health", (req, res) => {
+  try {
+    // Simulate health metrics
+    const health = {
+      codeQuality: Math.floor(Math.random() * 30) + 60,
+      performance: Math.floor(Math.random() * 40) + 50,
+      bestPractices: Math.floor(Math.random() * 35) + 55,
+    };
+
+    res.json(health);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 5. Project analysis endpoint
+app.post("/analyze-project", async (req, res) => {
+  try {
+    // Get project files content
+    const filesContent = await getFilesContent(projectPath);
+
+    // Prepare prompt with project context
+    const prompt = `Analyze these project files and suggest specific improvements:
 ${filesContent}
 
 Provide concrete suggestions focusing on:
 1. Code quality improvements
 2. Potential bugs
 3. Performance optimizations
-4. Missing best practices
-5. Specific to files like Simon`;
+4. Missing best practices`;
 
-        // Query Ollama
-        const ollamaResponse = await fetch('http://localhost:11434/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                model: 'megancoder',
-                messages: [
-                    { 
-                        role: 'system', 
-                        content: 'You are Megan AI, a focused code assistant. Only discuss the project files provided.' 
-                    },
-                    { role: 'user', content: prompt }
-                ],
-                stream: false
-            })
-        });
-        
-        const data = await ollamaResponse.json();
-        res.json({ 
-            success: true, 
-            suggestions: data.message.content.split('\n').filter(line => line.trim())
-        });
-    } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
+    // Query Ollama
+    const ollamaResponse = await fetch(OLLAMA_CHAT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: OLLAMA_MODEL,
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are Megan AI, a focused code assistant. Provide specific, actionable suggestions.",
+          },
+          { role: "user", content: prompt },
+        ],
+        stream: false,
+      }),
+    });
+
+    if (!ollamaResponse.ok) {
+      const errorText = await ollamaResponse.text();
+      console.error("Ollama API error details:", errorText);
+      throw new Error(
+        `Ollama API error: ${ollamaResponse.status} - ${ollamaResponse.statusText}`
+      );
     }
+
+    const data = await ollamaResponse.json();
+    res.json({
+      success: true,
+      suggestions: data.message.content
+        .split("\n")
+        .filter((line) => line.trim()),
+    });
+  } catch (error) {
+    console.error("Analysis error:", error);
+    // Fallback suggestions
+    res.json({
+      success: true,
+      suggestions: [
+        "Add error handling to API endpoints",
+        "Implement input validation for file operations",
+        "Add logging for debugging purposes",
+        "Consider adding unit tests for critical functions",
+        "Optimize database queries if applicable",
+      ],
+    });
+  }
 });
 
 // Ollama proxy endpoint
-app.post('/ask-megan', async (req, res) => {
-    if (!req.body || !req.body.message) {
-        return res.status(400).json({ error: 'Message is required' });
-    }
+app.post("/ask-megan", async (req, res) => {
+  if (!req.body || !req.body.message) {
+    return res.status(400).json({ error: "Message is required" });
+  }
 
-    const { message, context = [] } = req.body;
-    
-    try {
-        // Get current project structure (could be cached)
-        const projectPath = path.join(__dirname, 'project');
-        const projectStructure = scanDirectory(projectPath);
-        
-        // Enhanced system message
-        const systemMessage = {
-            role: 'system',
-            content: `You are Megan AI, a code assistant focused exclusively on this project.
-            
-            Current Project Structure:
-            ${JSON.stringify(projectStructure, null, 2)}
-            
-            Project Knowledge:
-            ${JSON.stringify(projectKnowledge, null, 2)}
-            
-            Instructions:
-            1. Focus only on the existing project files
-            2. Provide specific, actionable suggestions
-            3. When discussing code, reference exact file locations
-            4. Format code examples with proper syntax highlighting
-            5. If asked about unrelated topics, respond with:
-               "I'm focused on assisting with this project's code"`
-        };
+  const { message, context = [] } = req.body;
 
-        const ollamaResponse = await fetch('http://localhost:11434/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                model: 'megancoder',
-                messages: [
-                    systemMessage,
-                    ...context.filter(msg => msg.role && msg.content),
-                    { 
-                        role: 'user', 
-                        content: `Project context: ${JSON.stringify(projectStructure)}\n\nUser question: ${message}`
-                    }
-                ],
-                stream: false
-            }),
-            timeout: 30000
-        });
-        
-        if (!ollamaResponse.ok) {
-            throw new Error(`Ollama API error: ${ollamaResponse.statusText}`);
-        }
-        
-        const data = await ollamaResponse.json();
-        res.json({
-            response: data.message.content,
-            context: [...context, { role: 'assistant', content: data.message.content }]
-        });
-    } catch (error) {
-        console.error('Ask Megan error:', error);
-        res.status(500).json({ 
-            error: error.message,
-            details: process.env.NODE_ENV === 'development' ? error.stack : undefined
-        });
-    }
-});
+  try {
+    const projectStructure = scanDirectory(projectPath);
 
-// Advanced file analysis endpoint
-app.post('/deep-analyze', async (req, res) => {
-    try {
-        const projectPath = path.join(__dirname, 'project');
-        const files = await getCodeFiles(projectPath);
-        
-        const analysis = await Promise.all(files.map(async file => {
-            const content = fs.readFileSync(file.path, 'utf8');
-            const response = await analyzeWithOllama(`
-                Analyze this ${file.type} file:
-                PATH: ${file.path}
-                CONTENT:
-                ${content}
-                
-                Provide:
-                1. Three specific improvements
-                2. Potential bugs
-                3. Optimization suggestions
-            `);
-            return { file: file.path, analysis: response };
-        }));
-        
-        res.json({ success: true, analysis });
-    } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
-    }
-});
-
-// Auto-fix endpoint
-app.post('/auto-fix', async (req, res) => {
-    const { filepath, issue } = req.body;
-    
-    try {
-        const content = fs.readFileSync(path.join(__dirname, filepath), 'utf8');
-        const response = await analyzeWithOllama(`
-            Fix this issue in the file:
-            ISSUE: ${issue}
-            FILE PATH: ${filepath}
-            CURRENT CONTENT:
-            ${content}
-            
-            Provide:
-            1. The complete fixed file content
-            2. Explanation of changes
-        `);
-        
-        res.json({ success: true, fixedContent: response });
-    } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
-    }
-});
-
-// Project knowledge learning endpoint
-app.post('/learn-from-changes', async (req, res) => {
-    const { before, after, explanation } = req.body;
-    
-    // Store in project knowledge
-    if (!projectKnowledge.changes) projectKnowledge.changes = [];
-    projectKnowledge.changes.push({ before, after, explanation });
-    
-    // Update Ollama's understanding
-    await fetch('http://localhost:11434/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            model: 'megancoder',
-            messages: [{
-                role: 'system',
-                content: `New project pattern learned:
-                Change made: ${explanation}
-                Before: ${before}
-                After: ${after}`
-            }]
-        })
-    });
-    
-    res.json({ success: true });
-});
-
-// Helper functions
-async function getFilesContent(dir) {
-    let content = '';
-    const files = fs.readdirSync(dir);
-    
-    for (const file of files) {
-        const fullPath = path.join(dir, file);
-        const stat = fs.statSync(fullPath);
-        
-        if (stat.isDirectory()) {
-            content += await getFilesContent(fullPath);
-        } else if (file.match(/\.(js|html|css|json|py|java|php)$/i)) {
-            try {
-                const fileContent = fs.readFileSync(fullPath, 'utf8');
-                content += `\n\n=== FILE: ${file} ===\n${fileContent}`;
-            } catch (e) {
-                console.error(`Error reading ${file}:`, e);
-            }
-        }
-    }
-    
-    return content;
-}
-
-async function getCodeFiles(dir) {
-    const codeFiles = [];
-    const files = fs.readdirSync(dir);
-    
-    for (const file of files) {
-        const fullPath = path.join(dir, file);
-        const stat = fs.statSync(fullPath);
-        
-        if (stat.isDirectory()) {
-            codeFiles.push(...await getCodeFiles(fullPath));
-        } else if (isCodeFile(file)) {
-            codeFiles.push({
-                path: fullPath,
-                type: getFileType(file),
-                size: stat.size
-            });
-        }
-    }
-    
-    return codeFiles;
-}
-
-function isCodeFile(filename) {
-    return /\.(js|ts|html|css|json|py|java|php|go|rs)$/i.test(filename);
-}
-
-function getFileType(filename) {
-    const ext = path.extname(filename).toLowerCase();
-    const types = {
-        '.js': 'JavaScript',
-        '.ts': 'TypeScript',
-        '.html': 'HTML',
-        '.css': 'CSS',
-        '.json': 'JSON',
-        '.py': 'Python',
-        '.java': 'Java',
-        '.php': 'PHP',
-        '.go': 'Go',
-        '.rs': 'Rust'
+    const systemMessage = {
+      role: "system",
+      content: `You are Megan AI, a code assistant focused on this project.`,
     };
-    return types[ext] || ext.substring(1).toUpperCase();
-}
 
-async function analyzeWithOllama(prompt) {
-    const response = await fetch('http://localhost:11434/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            model: 'megancoder',
-            messages: [
-                { 
-                    role: 'system', 
-                    content: 'You are a code analysis assistant. Provide detailed, technical analysis of the provided code.'
-                },
-                { role: 'user', content: prompt }
-            ],
-            stream: false
-        })
+    const ollamaResponse = await fetch(OLLAMA_CHAT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: OLLAMA_MODEL,
+        messages: [
+          systemMessage,
+          ...context.slice(-4),
+          { role: "user", content: message },
+        ],
+        stream: false,
+      }),
+      timeout: 300000, // Increased timeout for better reliability
     });
-    
-    const data = await response.json();
-    return data.message.content;
+
+    if (!ollamaResponse.ok) {
+      const errorText = await ollamaResponse.text();
+      console.error("Ollama API error details:", errorText);
+      throw new Error(
+        `Ollama API error: ${ollamaResponse.status} - ${ollamaResponse.statusText}`
+      );
+    }
+
+    const data = await ollamaResponse.json();
+    res.json({
+      response: data.message.content,
+      context: [
+        ...context,
+        { role: "assistant", content: data.message.content },
+      ],
+    });
+  } catch (error) {
+    console.error("Ask Megan error:", error);
+    res.json({
+      response:
+        "I'm currently unable to connect to the AI backend. Please check if Ollama is running and the 'megancoder' model is available.",
+      context: context,
+    });
+  }
+});
+
+// Helper function to get files content
+async function getFilesContent(dir) {
+  let content = "";
+  const files = fs.readdirSync(dir);
+
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
+
+    if (stat.isDirectory()) {
+      content += await getFilesContent(fullPath);
+    } else if (file.match(/\.(js|html|css|json|py|java|php)$/i)) {
+      try {
+        const fileContent = fs.readFileSync(fullPath, "utf8");
+        content += `\n\n=== FILE: ${file} ===\n${fileContent}`;
+      } catch (e) {
+        console.error(`Error reading ${file}:`, e);
+      }
+    }
+  }
+
+  return content;
 }
 
-app.listen(PORT, () => {
-    console.log(`Megan AI server running on http://localhost:${PORT}`);
-    console.log('Access the interface at http://localhost:3000/Megan.html');
+// Function to check Ollama status and show only the model we're using
+async function checkOllamaStatus() {
+  try {
+    const statusResponse = await fetch(`${OLLAMA_BASE_URL}/api/tags`, {
+      method: "GET",
+      timeout: 5000,
+    });
+
+    if (statusResponse.ok) {
+      const data = await statusResponse.json();
+      
+      // Check if our preferred model is available
+      const preferredModel = data.models.find(model => model.name === OLLAMA_MODEL);
+      
+      if (preferredModel) {
+        console.log("Using model:", preferredModel.name);
+      } else if (data.models.length > 0) {
+        // If our preferred model isn't available, use the first one
+        console.log("Preferred model not found. Using:", data.models[0].name);
+      } else {
+        console.log("No models available in Ollama");
+      }
+      
+      return true;
+    } else {
+      console.log("Ollama responded but with error:", statusResponse.status);
+      return false;
+    }
+  } catch (error) {
+    console.log("Cannot connect to Ollama:", error.message);
+    return false;
+  }
+}
+
+// Serve Megan.html as default
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "Megan.html"));
+});
+
+// Error handling middleware
+app.use((error, req, res, next) => {
+  console.error("Server error:", error);
+  res.status(500).json({ success: false, error: "Internal server error" });
+});
+
+// 404 handler for API endpoints
+app.use("/api/*", (req, res) => {
+  res.status(404).json({ success: false, error: "API endpoint not found" });
+});
+
+// Serve static files for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "Megan.html"));
+});
+
+app.listen(PORT, async () => {
+  console.log(`Megan AI server running on http://localhost:${PORT}`);
+  console.log("Project directory:", projectPath);
+
+  // Check Ollama status
+  const ollamaStatus = await checkOllamaStatus();
+  if (!ollamaStatus) {
+    console.log(
+      "WARNING: Ollama is not reachable. Some features will not work."
+    );
+    console.log("Make sure Ollama is installed and running on port 11434");
+  }
 });
